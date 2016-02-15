@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="The stepper polyfill will help you to implement this material design component today.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Material Design Lite Stepper (Polyfill)</title>
+  <link rel="shortcut icon" href="../assets/img/component.png">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.1.1/material.blue-pink.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="../assets/css/page.css">
+</head>
+
+<body>
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header mdl-layout__header--scroll">
+      <div class="mdl-layout__header-row">
+        <span class="mdl-layout-title">MDL Stepper</span>
+        <div class="mdl-layout-spacer"></div>
+        <nav class="mdl-navigation mdl-layout--large-screen-only">
+          <a class="mdl-navigation__link" href="../index.html">About</a>
+          <a class="mdl-navigation__link" href="./index.html">Get started</a>
+          <a class="mdl-navigation__link" href="../component/index.html">Component</a>
+        </nav>
+      </div>
+    </header>
+    <div class="mdl-layout__drawer">
+      <span class="mdl-layout-title">MDL Stepper</span>
+      <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" href="../index.html">About</a>
+        <a class="mdl-navigation__link" href="./index.html">Get started</a>
+        <a class="mdl-navigation__link" href="../component/index.html">Component</a>
+      </nav>
+    </div>
+    <main class="mdl-layout__content">
+      <div class="page-content">
+        <section class="stepper-section" id="get-started">
+          <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--12-col">
+              <h1 class="stepper-title">Get started</h1>
+              <p>
+                The <b>MDL Stepper</b> component was based on Material Design Lite (MDL) library. To use this component before
+                you need to include the MDL to your project.
+              </p>
+              <p>Go to MDL website and <a href="http://www.getmdl.io/started/">get started now.</a></p>
+              <ul class="stepper-menu-link mdl-list">
+                <li class="mdl-list__item">
+                  <span class="mdl-list__item-primary-content"><a href="#include">Include CSS & Javascript</a></span>
+                </li>
+                <li class="mdl-list__item">
+                  <span class="mdl-list__item-primary-content"><a href="#usage">Basic Usage</a></span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="mdl-cell mdl-cell--12-col" id="include">
+              <h1 class="stepper-subtitle">Include CSS & Javascript</h1>
+              <p>
+                1. Choose the type of <a href="http://getmdl.io/started/index.html#download">download</a> and include the
+                Material Design Lite files to your all pages.
+              </p>
+              <p>
+                2. Get the CSS & Javascript files of MDL Stepper component.
+              </p>
+              <p>
+                <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+                  <div class="mdl-tabs__tab-bar stepper-tab-bar">
+                    <a href="#download" class="mdl-tabs__tab is-active">Download</a>
+                    <a href="#build" class="mdl-tabs__tab">Build</a>
+                  </div>
+                  <div class="mdl-tabs__panel is-active" id="download">
+                    <div class="mdl-grid">
+                      <div class="mdl-cell mdl-cell--12-col">
+                        <p>
+                          Download the zip of minified CSS & Javascript.
+                        </p>
+                        <p>
+                          <b>CSS</b>: 3.67KB uncompressed
+                        </p>
+                        <p>
+                          <b>Javascript</b>: 2.81KB gzipped (12.53KB uncompressed)
+                        </p>
+                        <p>
+                          <a href="https://github.com/ahlechandre/mdl-stepper/archive/master.zip" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored mdl-button--raised">Download Stepper v0.1.0</a>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mdl-tabs__panel" id="build">
+                    <div class="mdl-grid">
+                      <div class="mdl-cell mdl-cell--12-col">
+                        <p>
+                          You can clone the build version. Feel free to help develop this project.
+                        </p>
+                        <p>
+                          <pre><code>$ git clone https://github.com/ahlechandre/mdl-stepper.git mdl-stepper</code></pre>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </p>
+              <p>
+                4. Include the Material Design Lite + Stepper files.
+              </p>
+              <p>
+                <script src="https://gist.github.com/ahlechandre/38ba90a461f8f51e89bf.js"></script>
+              </p>
+            </div>
+
+            <div class="mdl-cell mdl-cell--12-col" id="usage">
+              <h1 class="stepper-subtitle">Basic Usage</h1>
+              <p>
+                To use a stepper get the element instance of <code>MaterialStepper</code> for control over API:
+              </p>
+              <p>
+                <script src="https://gist.github.com/ahlechandre/f3489660ccea7cf0b225.js"></script>
+              </p>
+            </div>
+          </div>
+        </section>
+        <section class="stepper-anchor">
+          <div class="stepper-anchor__left">
+            <a href="../index.html"><span>About</span><i class="material-icons">arrow_back</i></a>
+          </div>
+          <div class="stepper-anchor__right">
+            <a href="../component/index.html"><span>Component</span> <i class="material-icons">arrow_forward</i></a>
+          </div>
+        </section>
+        <footer class="mdl-mini-footer">
+          <div class="mdl-mini-footer__left-section">
+            <div class="mdl-logo">MDL Stepper</div>
+            <ul class="mdl-mini-footer__link-list">
+              <li><a href="#download">Download</a></li>
+              <li><a href="https://github.com/ahlechandre/mdl-stepper">GitHub</a></li>
+            </ul>
+          </div>
+          <div class="mdl-mini-footer__right-section footer-credits">
+            <div class="mdl-logo">Made with <span>❤</span> by <a href="https://github.com/ahlechandre">Alexandre Thebaldi</a></div>
+          </div>
+        </footer>
+      </div>
+    </main>
+  </div>
+  <script defer src="https://code.getmdl.io/1.1.1/material.min.js"></script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-73755855-1', 'auto');
+  ga('send', 'pageview');
+
+  </script>
+</body>
+
+</html>
