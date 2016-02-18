@@ -66,7 +66,7 @@ Editable steps allow users to return later to edit a step. These are ideal for w
 ### Optional steps
 Optional steps within a linear flow should be marked as optional. (Material Design)
 
-![Optional steps](content/gif/editable-steps.gif)
+![Optional steps](content/gif/optional-steps.gif)
 
 ### Error state
 ![Error state](content/gif/error-state.gif)
