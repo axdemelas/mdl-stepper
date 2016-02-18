@@ -111,7 +111,7 @@ Method | Effect | Return
 ```MaterialStepper.error(message)```  | Defines the current step state to "error" and shows the `message` parameter on title message element. When invoked it dispatch the event onsteperror to the step element. | `undefined`
 ```MaterialStepper.goto(id)```  | Move "active" to specified step `id` parameter. The id used as reference is the integer number shown on the label of each step (e.g. 2). | `boolean` - True if move and false if not move (e.g. On id not found)
 ```MaterialStepper.getActiveId()```  | Get the current "active" step element id on the stepper. The `id` used as reference is the integer number shown on the label of each step (e.g. 2). | `number`  
-```MaterialStepper.getActive()```  | Get the current "active" step element on the stepper. | HTMLElement   
+```MaterialStepper.getActive()```  | Get the current "active" step element on the stepper. | `HTMLElement`   
 
 ### Custom Events
 
@@ -127,4 +127,8 @@ Event | Target | Fired
 ## Help wanted
 
 * Horizontal type support
-* Cross-browser styles 
+* [Cross-browser styles](https://github.com/ahlechandre/mdl-stepper/issues/1)
+
+## License 
+
+[MIT License](https://github.com/ahlechandre/mdl-stepper/blob/gh-pages/LICENSE) © 2016 Alexandre Thebaldi
