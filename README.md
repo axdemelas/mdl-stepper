@@ -44,19 +44,28 @@ myStepper.next();
 The types of steppers and steps are specified in [Material Design page](https://www.google.com/design/spec/components/steppers.html).
 
 ### Linear stepper
+Linear steppers require users to complete one step in order to move on to the next. (Material Design)
 
 ![Linear stepper](content/gif/linear-stepper.gif)
 
 ### Non-linear stepper
+Non-linear steppers allow users to enter a multi-step flow at any point. (Material Design)
+
 ![Non-linear stepper](content/gif/non-linear-stepper.gif)
 
 ### Stepper feedback
+Steppers may display a transient feedback message after a step is saved. Stepper feedback should only be used if there is a long latency between  steps. (Material Design)
+
 ![Stepper feedback](content/gif/stepper-feedback.gif)
 
 ### Editable steps
+Editable steps allow users to return later to edit a step. These are ideal for workflows that involve editing steps within a session. (Material Design)
+
 ![Editable steps](content/gif/editable-steps.gif)
 
 ### Optional steps
+Optional steps within a linear flow should be marked as optional. (Material Design)
+
 ![Optional steps](content/gif/editable-steps.gif)
 
 ### Error state
@@ -68,7 +77,7 @@ The types of steppers and steps are specified in [Material Design page](https://
 
 ### To include a component
 
-
+Go to [component page](https://ahlechandre.github.io/mdl-stepper/component/index.html) for markup details.
 
 ### Configuration options
 
