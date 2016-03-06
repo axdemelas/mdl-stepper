@@ -6,55 +6,82 @@
  * @link https://github.com/ahlechandre/mdl-stepper
  *
  * This is a conversion to Sass (using SCSS syntax) from the original CSS file.
- *
  * @contributor Michael Haschke <http://michael.haschke.biz/>
  */
 
-@-webkit-keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 100;
-    }
-}
+// -- configuration ------------------------------------------------------------
 
-@-moz-keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 100;
-    }
-}
+$stepper-define-keyframes: true !default;
 
-@-ms-keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 100;
-    }
-}
+$stepper-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12) !default;
+$stepper-background-color: white !default;
+$stepper-max-width: 720px !default;
+$stepper-border-radius: 2px !default;
 
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
+$step-animation: fadeIn 0.5s ease-in-out !default;
+$step-border-color: rgba(0, 0, 0, 0.1) !default;
+$step-number-text-color: white !default;
+$step-number-background-color: rgba(0, 0, 0, 0.3) !default;
+$step-label-hovered-background-color: rgba(0, 0, 0, 0.06) !default;
+$tep-button-raised-colored-background-color: #2196F3 !default;
+$step-active-number-text-color: white !default;
+$step-active-number-text-background-color: #2196F3 !default;
+$step-completed-number-background-color: #2196F3 !default;
+$step-error-number-background-color: #F44336 !default;
+$step-error-title-text-color: #F44336 !default;
+
+$step-transient-animation: 0.3s all ease-in-out !default;
+$step-transient-background-color: rgba(255, 255, 255, 0.8) !default;
+
+// -- layout definition --------------------------------------------------------
+
+@if $stepper-define-keyframes {
+    @-webkit-keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 100;
+        }
     }
-    100% {
-        opacity: 100;
+
+    @-moz-keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 100;
+        }
+    }
+
+    @-ms-keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 100;
+        }
+    }
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 100;
+        }
     }
 }
 
 .mdl-stepper {
     display: block;
-    background-color: white;
+    background-color: $stepper-background-color;
     position: relative;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: $stepper-box-shadow;
     padding: 24px 0;
-    max-width: 720px;
+    max-width: $stepper-max-width;
     width: 100%;
-    border-radius: 2px;
+    border-radius: $stepper-border-radius;
 }
 
 @media only screen and (max-width: 375px) {
@@ -73,10 +100,10 @@
 }
 
 .mdl-step > * {
-    -webkit-animation: fadeIn 0.5s ease-in-out;
-    -moz-animation: fadeIn 0.5s ease-in-out;
-    -ms-animation: fadeIn 0.5s ease-in-out;
-    animation: fadeIn 0.5s ease-in-out;
+    -webkit-animation: $step-animation;
+    -moz-animation: $step-animation;
+    -ms-animation: $step-animation;
+    animation: $step-animation;
 }
 
 .mdl-step:not(:last-child) {
@@ -84,7 +111,7 @@
 }
 
 .mdl-step--completed .mdl-step__label-indicator {
-    background-color: #2196F3;
+    background-color: $step-completed-number-background-color;
 }
 
 .mdl-step .mdl-step-error-message {
@@ -92,17 +119,17 @@
 }
 
 .mdl-step--error .mdl-step__label-indicator {
-    background-color: #F44336 !important;
+    background-color: $step-error-number-background-color !important;
     font-weight: bold;
 }
 
 .mdl-step--error .mdl-step__title {
-    color: #F44336;
+    color: $step-error-title-text-color;
 }
 
 .mdl-step--error .mdl-step-error-message {
     display: block;
-    color: #F44336;
+    color: $step-error-title-text-color;
     font-weight: normal;
 }
 
@@ -116,11 +143,11 @@
 
 .mdl-step__label-indicator {
     order: 1;
-    color: white;
+    color: $step-number-text-color;
     width: 24px;
     height: 24px;
     padding: 2px;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: $step-number-background-color;
     border-radius: 100%;
     -webkit-display: flex;
     -moz-display: flex;
@@ -141,7 +168,7 @@
     left: 0;
     width: 1px;
     min-height: 40px;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: $step-border-color;
     margin: 32px 4px 0 37px;
 }
 
@@ -158,7 +185,7 @@
 }
 
 .mdl-step__label:hover {
-    background-color: rgba(0, 0, 0, 0.06);
+    background-color: $step-label-hovered-background-color;
 }
 
 .mdl-step__label:not(:first-child) {
@@ -204,13 +231,13 @@
 }
 
 .mdl-step__actions .mdl-button--raised.mdl-button--colored {
-    background-color: #2196F3;
+    background-color: $tep-button-raised-colored-background-color;
     box-shadow: none;
 }
 
 .mdl-step.is-active .mdl-step__label-indicator {
-    color: white;
-    background-color: #2196F3;
+    color: $step-active-number-text-color;
+    background-color: $step-active-number-text-background-color;
 }
 
 .mdl-step.mdl-step.is-active:not(:last-child) .mdl-step__label-indicator:after {
@@ -268,7 +295,7 @@
     display: flex;
     width: calc(100% - 88px);
     height: 350px;
-    transition: 0.3s all ease-in-out;
+    transition: $step-transient-animation;
 }
 
 .mdl-step__transient-overlay {
@@ -278,7 +305,7 @@
     width: 100%;
     height: 100%;
     top: 0;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: $step-transient-background-color;
 }
 
 .mdl-step__transient-loader {
