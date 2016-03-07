@@ -20,13 +20,13 @@ $stepper-border-radius: $button-border-radius !default;
 
 $step-animation: $animation-curve-default !default;
 $step-border-color: $card-border-color !default;
-$step-number-text-color: unquote("rgba(#{$color-primary-contrast})") !default;
+$step-number-text-color: unquote("rgb(#{$color-primary-contrast})") !default;
 $step-number-background-color: $default-item-active-bg-color !default;
 $step-label-hovered-background-color: rgba(0, 0, 0, 0.06) !default;
-$tep-button-raised-colored-background-color: unquote("rgba(#{$color-primary})") !default;
-$step-active-number-text-color: unquote("rgba(#{$color-primary-contrast})") !default;
-$step-active-number-text-background-color: unquote("rgba(#{$color-primary})") !default;
-$step-completed-number-background-color: unquote("rgba(#{$color-primary})") !default;
+$step-button-raised-colored-background-color: unquote("rgb(#{$color-primary})") !default;
+$step-active-number-text-color: unquote("rgb(#{$color-primary-contrast})") !default;
+$step-active-number-text-background-color: unquote("rgb(#{$color-primary})") !default;
+$step-completed-number-background-color: unquote("rgb(#{$color-primary})") !default;
 $step-error-number-background-color: $input-text-error-color !default;
 $step-error-title-text-color: $input-text-error-color !default;
 

@@ -23,7 +23,7 @@ $step-border-color: rgba(0, 0, 0, 0.1) !default;
 $step-number-text-color: white !default;
 $step-number-background-color: rgba(0, 0, 0, 0.3) !default;
 $step-label-hovered-background-color: rgba(0, 0, 0, 0.06) !default;
-$tep-button-raised-colored-background-color: #2196F3 !default;
+$step-button-raised-colored-background-color: #2196F3 !default;
 $step-active-number-text-color: white !default;
 $step-active-number-text-background-color: #2196F3 !default;
 $step-completed-number-background-color: #2196F3 !default;
@@ -231,7 +231,7 @@ $step-transient-background-color: rgba(255, 255, 255, 0.8) !default;
 }
 
 .mdl-step__actions .mdl-button--raised.mdl-button--colored {
-    background-color: $tep-button-raised-colored-background-color;
+    background-color: $step-button-raised-colored-background-color;
     box-shadow: none;
 }
 
