@@ -1,0 +1,14 @@
+{
+  "name": "mdl-stepper",
+  "version": "0.1.0",
+  "description": "A library that implements to the Material Design Lite a polyfill of stepper component specified by Material Design.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ahlechandre/mdl-stepper.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+  },
+  "devDependencies": {
+  }
+}
