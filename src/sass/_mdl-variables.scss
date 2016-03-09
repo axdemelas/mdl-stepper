@@ -1,0 +1,34 @@
+/**
+ * material-design-lite-stepper - A Material Design Lite Stepper component polyfill
+ * @version v0.1.0
+ * @license MIT
+ * @link https://github.com/ahlechandre/mdl-stepper
+ *
+ * This is a config mapping that uses MDL variables for stepper layout.
+ * Load it after MDL core and before Stepper polyfill.
+ * @contributor Michael Haschke <http://michael.haschke.biz/>
+ */
+
+// -- configuration ------------------------------------------------------------
+
+$stepper-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, $shadow-key-penumbra-opacity),
+                     0 3px 1px -2px rgba(0, 0, 0, $shadow-key-umbra-opacity),
+                     0 1px 5px 0 rgba(0, 0, 0, $shadow-ambient-shadow-opacity) !default;
+$stepper-background-color: $card-background-color !default;
+//$stepper-max-width: 720px !default;
+$stepper-border-radius: $button-border-radius !default;
+
+$step-animation: $animation-curve-default !default;
+$step-border-color: $card-border-color !default;
+$step-number-text-color: unquote("rgb(#{$color-primary-contrast})") !default;
+$step-number-background-color: $default-item-active-bg-color !default;
+$step-label-hovered-background-color: rgba(0, 0, 0, 0.06) !default;
+$step-button-raised-colored-background-color: unquote("rgb(#{$color-primary})") !default;
+$step-active-number-text-color: unquote("rgb(#{$color-primary-contrast})") !default;
+$step-active-number-text-background-color: unquote("rgb(#{$color-primary})") !default;
+$step-completed-number-background-color: unquote("rgb(#{$color-primary})") !default;
+$step-error-number-background-color: $input-text-error-color !default;
+$step-error-title-text-color: $input-text-error-color !default;
+
+$step-transient-animation: $animation-curve-default !default;
+//$step-transient-background-color: rgba(255, 255, 255, 0.8) !default;
