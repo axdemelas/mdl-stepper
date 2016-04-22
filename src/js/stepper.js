@@ -790,7 +790,6 @@
     if (!step.actions_next) return false;
 
     step.actions_next.addEventListener('click', function (event) {
-      event.preventDefault();
       if (this.Stepper_.hasFeedback) {
         this.addTransientEffect_(step);
       }
