@@ -542,7 +542,7 @@
   MaterialStepper.prototype.goto = function (id) {
     return this.setActive_(id);
   }
-   
+
   /**
   * Defines the current state of step to "error" 
   * and display alert message instead of default title message. 
@@ -609,7 +609,7 @@
             }
           }
         }
-        moved = this.setActive_(activate);                
+        moved = this.setActive_(activate);
         // Update "manually" the state of current step to "completed" because
         // MaterialStepper.setActive_(<number>) can't change the state of non-linears steppers
         // and can't change the state of optional or last step in linears steppers. 
@@ -623,14 +623,14 @@
         } else {
           this.updateStepState_(step, this.StepState_.COMPLETED);
         }
-        
+
         // Now dispatch on step the custom event "onstepcomplete"
         this.dispatchEventOnStepComplete_(step);
         break;
       }
     }
     return moved;
-  };      
+  };
 
 
   /**
@@ -640,7 +640,7 @@
   * @param {string}
   */
   MaterialStepper.prototype.updateTitleMessage_ = function (step, text) {
-    var titleMessage = step.label_title_message;
+    var titleMessage = step.container.querySelector('.' + this.CssClasses_.STEP_TITLE_MESSAGE);
 
     if (!titleMessage) {
       titleMessage = document.createElement('span');
@@ -650,8 +650,8 @@
 
     titleMessage.textContent = text;
   };
-  
-  
+
+
   /**
   * Remove the title message if it exists. 
   * 
@@ -663,8 +663,8 @@
       titleMessage.parentNode.removeChild(titleMessage);
     }
   };
-  
-  
+
+
   /**
   * Remove (feedback) transient effect and applied to the step. 
   * 
@@ -679,8 +679,8 @@
     step.content.removeChild(transient);
     return true;
   };
-     
-     
+
+
   /**
   * Create (feedback) transient effect and apply to the current step. 
   * 
@@ -796,7 +796,7 @@
       step.container.dispatchEvent(this.CustomEvents_.onstepnext);
     }.bind(this));
   }
-  
+
 
   /**
   * Dispatch "onstepcancel" event on step when the step action button/link with 
@@ -812,7 +812,7 @@
       step.container.dispatchEvent(this.CustomEvents_.onstepcancel);
     }.bind(this));
   }
-  
+
 
   /**
   * Dispatch "onstepskip" event on step when the step action button/link with 
@@ -844,7 +844,7 @@
       step.container.dispatchEvent(this.CustomEvents_.onstepback);
     }.bind(this));
   }
-  
+
   /**
   * Check if has some active transient effect on steps
   *
@@ -857,7 +857,7 @@
     var transient = this.element_.querySelector(cssClasseStep + ' > ' + cssClasseStepContent + ' > ' + cssClasseTransient);
     return (transient ? true : false);
   }
-  
+
   /**
    * Initialize the instance
    * @public
@@ -874,7 +874,7 @@
       this.setCustomEvents_();
     }
   }
-  
+
   // The component registers itself. It can assume componentHandler is available
   // in the global scope.
   componentHandler.register({
