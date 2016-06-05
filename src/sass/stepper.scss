@@ -17,6 +17,7 @@ $stepper-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 
 $stepper-background-color: white !default;
 $stepper-max-width: 720px !default;
 $stepper-border-radius: 2px !default;
+$stepper-font-family: 'Roboto', sans-serif;
 
 $step-animation: fadeIn 0.5s ease-in-out !default;
 $step-border-color: rgba(0, 0, 0, 0.1) !default;
@@ -74,6 +75,7 @@ $step-transient-background-color: rgba(255, 255, 255, 0.8) !default;
 }
 
 .mdl-stepper {
+    font-family: $stepper-font-family;
     display: block;
     background-color: $stepper-background-color;
     position: relative;
@@ -165,6 +167,7 @@ $step-transient-background-color: rgba(255, 255, 255, 0.8) !default;
 .mdl-step:not(:last-child) .mdl-step__label-indicator:after {
     content: '';
     position: absolute;
+    top: 12px;
     left: 0;
     width: 1px;
     min-height: 40px;
@@ -210,7 +213,7 @@ $step-transient-background-color: rgba(255, 255, 255, 0.8) !default;
     font-size: 12px;
     opacity: .7;
     font-weight: 400;
-    margin-top: -6px;
+    margin-top: 18px;
 }
 
 .mdl-step__content {
@@ -243,6 +246,8 @@ $step-transient-background-color: rgba(255, 255, 255, 0.8) !default;
 .mdl-step.mdl-step.is-active:not(:last-child) .mdl-step__label-indicator:after {
     height: 462px;
     margin: 32px 0 0 37px;
+    position: absolute;
+    top: 12px;
 }
 
 .mdl-step.is-active .mdl-step__label .mdl-step__title {
