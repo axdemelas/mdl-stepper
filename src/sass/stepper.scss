@@ -110,6 +110,10 @@ $step-transient-background-color: rgba(255, 255, 255, 0.8) !default;
 
 .mdl-step:not(:last-child) {
     margin-bottom: 24px;
+    
+    &.is-active {
+      margin-bottom: 36px;  
+    }
 }
 
 .mdl-step--completed .mdl-step__label-indicator {
@@ -146,22 +150,26 @@ $step-transient-background-color: rgba(255, 255, 255, 0.8) !default;
 .mdl-step__label-indicator {
     order: 1;
     color: $step-number-text-color;
-    width: 24px;
-    height: 24px;
-    padding: 2px;
     background-color: $step-number-background-color;
     border-radius: 100%;
     -webkit-display: flex;
     -moz-display: flex;
     -ms-display: flex;
     display: flex;
-    align-items: center;
-    justify-content: center;
     margin-right: 12px;
+    margin-bottom: auto;
 }
 
 .mdl-step__label-indicator >:first-child {
     font-size: 15px;
+    width: 28px;
+    height: 28px;
+    -webkit-display: flex;
+    -moz-display: flex;
+    -ms-display: flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .mdl-step:not(:last-child) .mdl-step__label-indicator:after {
@@ -205,15 +213,16 @@ $step-transient-background-color: rgba(255, 255, 255, 0.8) !default;
     -moz-display: flex;
     -ms-display: flex;
     display: flex;
-    flex-direction: column;
+    flex-flow: column nowrap;
+    width: 100%;
 }
 
 .mdl-step__label .mdl-step__title .mdl-step__title-message {
-    position: absolute;
     font-size: 12px;
     opacity: .7;
     font-weight: 400;
-    margin-top: 18px;
+    position: absolute;
+    top: 28px;
 }
 
 .mdl-step__content {
@@ -244,10 +253,8 @@ $step-transient-background-color: rgba(255, 255, 255, 0.8) !default;
 }
 
 .mdl-step.mdl-step.is-active:not(:last-child) .mdl-step__label-indicator:after {
-    height: 462px;
+    height: 472px;
     margin: 32px 0 0 37px;
-    position: absolute;
-    top: 12px;
 }
 
 .mdl-step.is-active .mdl-step__label .mdl-step__title {
