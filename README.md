@@ -73,7 +73,7 @@ Optional steps within a linear flow should be marked as optional. (Material Desi
 
 ## Introduction
 
-"Steppers display progress through a sequence by breaking it up into multiple logical and numbered steps. Avoid using steppers to break up sections in a short form, or multiple times on one page". See the [Material Design specification page](https://www.google.com/design/spec/components/steppers.html) for more details.
+"Steppers display progress through a sequence by breaking it up into multiple logical and numbered steps. Avoid using steppers to break up sections in a short form, or multiple times on one page". See the [Material Design specification page](https://www.google.com/design/spec/components/steppers.html).
 
 ### To include a component
 
