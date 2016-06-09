@@ -1,14 +1,38 @@
 {
   "name": "mdl-stepper",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "A library that implements to the Material Design Lite a polyfill of stepper component specified by Material Design.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack",
+    "prod": "NODE_ENV=production && webpack",
+    "prod-windows": "set \"NODE_ENV=production\" && webpack"    
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ahlechandre/mdl-stepper.git"
+    "url": "git+https://github.com/ahlechandre/mdl-stepper.git"
   },
+  "keywords": [
+    "material-design-lite",
+    "mdl-stepper",
+    "stepper",
+    "material-design",
+    "stepper component"
+  ],
+  "author": "Alexandre Thebaldi",
   "license": "MIT",
-  "dependencies": {
+  "bugs": {
+    "url": "https://github.com/ahlechandre/mdl-stepper/issues"
   },
+  "homepage": "https://ahlechandre.github.io/mdl-stepper",
   "devDependencies": {
+    "babel-core": "^6.9.1",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
+    "webpack": "^1.13.1"
   }
 }

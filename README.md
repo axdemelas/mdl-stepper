@@ -1,4 +1,5 @@
-# MDL Stepper
+# Introduction
+## MDL Stepper
 
 A library that implements to the [Material Design Lite](https://getmdl.io) a polyfill of stepper component specified by [Material Design](https://www.google.com/design/spec/components/steppers.html). The stepper polyfill will help you to implement this material design component today.
   
@@ -12,14 +13,13 @@ A library that implements to the [Material Design Lite](https://getmdl.io) a pol
 
 ### Use MDL Stepper on your site?
 
-For addtional details go to 
-[ahlechandre.github.io/mdl-stepper](https://ahlechandre.github.io/mdl-stepper/).
+[ahlechandre.github.io/mdl-stepper](https://ahlechandre.github.io/mdl-stepper/)
 
 ## Get Started
 
-The MDL Stepper component was based on Material Design Lite (MDL) library. To use this component before you need to include the [MDL](https://getmdl.io) to your project.
+The MDL Stepper component was based on Material Design Lite (MDL) library. To use this component before you will need to include the [MDL](https://getmdl.io) to your project.
 
-### INCLUDE CSS & JAVASCRIPT
+### CSS + JAVASCRIPT
 
 1. Choose the type of [download](http://getmdl.io/started/index.html#download) and include the Material Design Lite files to your all pages.
 
@@ -31,12 +31,12 @@ The MDL Stepper component was based on Material Design Lite (MDL) library. To us
 ### Basic Usage
 
 ```js
-// Select your stepper element  
+// Selects stepper element.
 var stepperElement = document.querySelector('ul.mdl-stepper');
-// Get the MaterialStepper instance of element to control it          
-var myStepper = stepperElement.MaterialStepper;
-// You can test
-myStepper.next();
+// Gets the MaterialStepper instance of element to control it.
+var Stepper = stepperElement.MaterialStepper;
+// Goes to the next step.
+Stepper.next();
 ```
 
 ## Component
@@ -46,38 +46,38 @@ The types of steppers and steps are specified in [Material Design page](https://
 ### Linear stepper
 Linear steppers require users to complete one step in order to move on to the next. (Material Design)
 
-![Linear stepper](content/gif/linear-stepper.gif)
+![Linear stepper](docs/_assets/stepper_linear.gif)
 
 ### Non-linear stepper
 Non-linear steppers allow users to enter a multi-step flow at any point. (Material Design)
 
-![Non-linear stepper](content/gif/non-linear-stepper.gif)
+![Non-linear stepper](docs/_assets/stepper_nonlinear.gif)
 
 ### Stepper feedback
 Steppers may display a transient feedback message after a step is saved. Stepper feedback should only be used if there is a long latency between  steps. (Material Design)
 
-![Stepper feedback](content/gif/stepper-feedback.gif)
+![Stepper feedback](docs/_assets/stepper_feedback.gif)
 
 ### Editable steps
 Editable steps allow users to return later to edit a step. These are ideal for workflows that involve editing steps within a session. (Material Design)
 
-![Editable steps](content/gif/editable-steps.gif)
+![Editable steps](docs/_assets/step_editable.gif)
 
 ### Optional steps
 Optional steps within a linear flow should be marked as optional. (Material Design)
 
-![Optional steps](content/gif/optional-steps.gif)
+![Optional steps](docs/_assets/step_optional.gif)
 
 ### Error state
-![Error state](content/gif/error-state.gif)
+![Error state](docs/_assets/state_error.gif)
 
 ## Introduction
 
-"Steppers display progress through a sequence by breaking it up into multiple logical and numbered steps. Avoid using steppers to break up sections in a short form, or multiple times on one page". See the [Material Design specification page](https://www.google.com/design/spec/components/steppers.html).
+"Steppers display progress through a sequence by breaking it up into multiple logical and numbered steps. Avoid using steppers to break up sections in a short form, or multiple times on one page". Goes to [Material Design spec](https://www.google.com/design/spec/components/steppers.html)  page.
 
 ### To include a component
 
-Go to [component page](https://ahlechandre.github.io/mdl-stepper/component/index.html) for markup details.
+See component [markup details](https://ahlechandre.github.io/mdl-stepper/component/index.html).
 
 ### Configuration options
 
@@ -99,7 +99,7 @@ Class | Effect | Remarks
 
 ## Javascript API
 
-All methods and custom events to the control over your stepper 
+Methods and custom events to the control over Stepper instance. 
 
 ### Methods
 
@@ -126,8 +126,7 @@ Event | Target | Fired
 
 ## Help wanted
 
-* Horizontal type support
-* [Cross-browser styles](https://github.com/ahlechandre/mdl-stepper/issues/1)
+* [Horizontal type support](https://github.com/ahlechandre/mdl-stepper/issues/8)
 
 ## License 
 

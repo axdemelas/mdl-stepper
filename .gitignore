@@ -1,2 +1,4 @@
-./src/sass/.sass-cache/
-./src/css/*.map
+.sass-cache/
+node_modules/
+_assets/
+*.map
