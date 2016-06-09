@@ -19,6 +19,21 @@ A library that implements to the [Material Design Lite](https://getmdl.io) a pol
 
 The MDL Stepper component was based on Material Design Lite (MDL) library. To use this component before you will need to include the [MDL](https://getmdl.io) to your project.
 
+## Installation
+
+### Build
+
+```bash
+git clone git@github.com:ahlechandre/mdl-stepper.git
+cd mdl-stepper
+```
+
+### NPM
+
+```bash
+npm install --save mdl-stepper
+```
+
 ### CSS + JAVASCRIPT
 
 1. Choose the type of [download](http://getmdl.io/started/index.html#download) and include the Material Design Lite files to your all pages.
