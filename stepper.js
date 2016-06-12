@@ -48,9 +48,9 @@
 
 	/**
 	 * material-design-lite-stepper - A Material Design Lite Stepper component polyfill
-	 * @version v0.1.0
+	 * @version v1.0.0
 	 * @license MIT
-	 * @author Alexandre Thebaldi (ahlechandre@gmail.com).
+	 * @author Alexandre Thebaldi <ahlechandre@gmail.com>.
 	 * @link https://github.com/ahlechandre/mdl-stepper
 	 */
 
@@ -162,7 +162,6 @@
 	   * @private
 	   */
 	  MaterialStepper.prototype.CssClasses_ = {
-	    RIPPLE_EFFECT: 'mdl-js-ripple-effect',
 	    BUTTON_JS: 'mdl-js-button',
 	    STEPPER_LINEAR: 'mdl-stepper--linear',
 	    STEPPER_FEEDBACK: 'mdl-stepper--feedback',
@@ -327,27 +326,6 @@
 	      optional: optional,
 	      active: active
 	    };
-	  };
-
-	  /**
-	   * Add material desing lite ripple effect classes on labels and upgrade the DOM.
-	   * 
-	   * @param {MaterialStepper.Steps_.collection[<number>]} 
-	   * @private
-	   */
-	  MaterialStepper.prototype.LabelRippleEffect_ = function (step) {
-	    var setEffect = function setEffect(step, index, steps) {
-	      step.label.classList.add(this.CssClasses_.BUTTON_JS);
-	      step.label.classList.add(this.CssClasses_.RIPPLE_EFFECT);
-	    };
-
-	    if (step) {
-	      setEffect.bind(this)(step);
-	    } else {
-	      this.Steps_.collection.forEach(setEffect.bind(this));
-	    }
-	    // Assume componentHandler is available in the global scope.
-	    componentHandler.upgradeDom();
 	  };
 
 	  /**
@@ -652,9 +630,6 @@
 	          if (step.isOptional || step.id === this.Steps_.total) {
 	            this.updateStepState_(step, this.StepState_.COMPLETED);
 	          }
-	          if (step.isEditable) {
-	            this.LabelRippleEffect_(step);
-	          }
 	        } else {
 	          this.updateStepState_(step, this.StepState_.COMPLETED);
 	        }
@@ -890,10 +865,6 @@
 	    if (this.element_) {
 	      this.Stepper_ = this.getStepper_();
 	      this.Steps_ = this.getSteps_();
-	      if (!this.Stepper_.isLinear) {
-	        // non-linears stepper has ripple effect on labels
-	        this.LabelRippleEffect_();
-	      }
 	      this.setActive_();
 	      this.setCustomEvents_();
 	    }

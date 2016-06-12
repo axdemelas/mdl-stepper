@@ -139,10 +139,6 @@ Event | Target | Fired
   ```onstepskip``` | .mdl-step | When the step action button/link with `[data-stepper-skip]` attribute is clicked.
 ```onsteppercomplete``` | .mdl-stepper | When all required steps are completed. Optional steps are ignored for dispatch this event.
 
-## Help wanted
-
-* [Horizontal type support](https://github.com/ahlechandre/mdl-stepper/issues/8)
-
 ## License 
 
 [MIT License](https://github.com/ahlechandre/mdl-stepper/blob/gh-pages/LICENSE) © 2016 Alexandre Thebaldi

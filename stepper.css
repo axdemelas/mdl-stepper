@@ -14,6 +14,8 @@
  *
  */
 /* STEPPER */
+/* GRID */
+/* SHADOWS */
 /**
  * mdl-stepper - A Material Design Lite Stepper component polyfill.
  * @version v1.0.0
@@ -24,6 +26,7 @@
 /* Animation */
 /* KEYFRAMES */
 /* DISPLAY FLEX */
+/* Shadows */
 /**
  * mdl-stepper - A Material Design Lite Stepper component polyfill.
  * @version v1.0.0
@@ -40,6 +43,8 @@
  *
  */
 /* STEPPER */
+/* GRID */
+/* SHADOWS */
 /**
  * mdl-stepper - A Material Design Lite Stepper component polyfill.
  * @version v1.0.0
@@ -50,6 +55,7 @@
 /* Animation */
 /* KEYFRAMES */
 /* DISPLAY FLEX */
+/* Shadows */
 /**
  * mdl-stepper - A Material Design Lite Stepper component polyfill.
  * @version v1.0.0
@@ -77,13 +83,45 @@
     opacity: 0; }
   100% {
     opacity: 100; } }
+@-webkit-keyframes FadeInFromBottom {
+  0% {
+    height: 0;
+    padding-top: 84px;
+    background-color: white;
+    color: white; }
+  25% {
+    color: white; } }
+@-moz-keyframes FadeInFromBottom {
+  0% {
+    height: 0;
+    padding-top: 84px;
+    background-color: white;
+    color: white; }
+  25% {
+    color: white; } }
+@-o-keyframes FadeInFromBottom {
+  0% {
+    height: 0;
+    padding-top: 84px;
+    background-color: white;
+    color: white; }
+  25% {
+    color: white; } }
+@keyframes FadeInFromBottom {
+  0% {
+    height: 0;
+    padding-top: 84px;
+    background-color: white;
+    color: white; }
+  25% {
+    color: white; } }
 /* STEPPER */
 .mdl-stepper {
   position: relative;
   font-family: "Roboto", sans-serif;
   background-color: white;
   display: block;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
   padding: 24px 0;
   max-width: 720px;
   width: 100%;
@@ -121,10 +159,10 @@
   .mdl-step .mdl-step-error-message {
     display: none; }
   .mdl-step > * {
-    -webkit-animation: "FadeIn" 0.5s ease-in-out;
-    -moz-animation: "FadeIn" 0.5s ease-in-out;
-    -ms-animation: "FadeIn" 0.5s ease-in-out;
-    animation: "FadeIn" 0.5s ease-in-out; }
+    -webkit-animation: FadeIn 0.5s ease-in-out;
+    -moz-animation: FadeIn 0.5s ease-in-out;
+    -ms-animation: FadeIn 0.5s ease-in-out;
+    animation: FadeIn 0.5s ease-in-out; }
 
 /* STEP ACTIVE */
 .mdl-step.is-active .mdl-step__title {
@@ -135,7 +173,7 @@
   background-color: #2196F3;
   color: white; }
 .mdl-step.is-active:not(:last-child) .mdl-step__label-indicator:after {
-  height: 482px; }
+  height: 442px; }
 .mdl-step.is-active .mdl-step__actions {
   -webkit-display: flex;
   -moz-display: flex;
@@ -185,8 +223,6 @@
   margin-bottom: 8px;
   padding: 8px 24px 24px 24px;
   align-items: center; }
-  .mdl-step__label:hover {
-    background-color: rgba(0, 0, 0, 0.06); }
 
 /* STEP LABEL MOD WITH SUBLABEL */
 .mdl-step__label--with-sublabel {
@@ -236,7 +272,7 @@
 /* STEP CONTENT */
 .mdl-step__content {
   display: none;
-  height: 360px;
+  height: 320px;
   width: inherit;
   overflow: auto;
   margin-left: 64px;
@@ -264,7 +300,7 @@
   -ms-display: flex;
   display: flex;
   width: calc(100% - 88px);
-  height: 360px;
+  height: 320px;
   transition: 0.3s all ease-in-out; }
 
 /* STEP TRANSIENT OVERLAY */
@@ -281,5 +317,143 @@
 .mdl-step__transient-loader {
   z-index: 4;
   margin: auto; }
+
+/* STEPPER MOD HORIZONTAL */
+@media only screen and (min-width: 841px) {
+  .mdl-stepper--horizontal {
+    -webkit-display: flex;
+    -moz-display: flex;
+    -ms-display: flex;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    max-width: 840px;
+    padding: 0;
+    min-height: 576px;
+    /* HORIZONTAL STEP */
+    /* HORIZONTAL STEP LABEL */
+    /* HORIZONTAL STEP CONTENT */
+    /* HORIZONTAL STEP ACTIONS */
+    /* STEPPER MOD HORIZONTAL + MOD LINEAR */ }
+    .mdl-stepper--horizontal:before {
+      content: '';
+      background-color: transparent;
+      width: 100%;
+      min-height: 84px;
+      box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+      position: absolute;
+      top: 0;
+      left: 0; }
+    .mdl-stepper--horizontal > .mdl-step {
+      position: static;
+      -webkit-display: flex;
+      -moz-display: flex;
+      -ms-display: flex;
+      display: flex;
+      justify-content: center;
+      align-items: initial;
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
+      max-height: 84px;
+      overflow: hidden;
+      /* STEP MOD COMPLETED */ }
+      .mdl-stepper--horizontal > .mdl-step.is-active.mdl-step--transient:before {
+        content: attr(data-step-transient-message);
+        -webkit-animation: FadeInFromBottom 0.3s cubic-bezier(0, 0, 0, 0.99);
+        -moz-animation: FadeInFromBottom 0.3s cubic-bezier(0, 0, 0, 0.99);
+        -ms-animation: FadeInFromBottom 0.3s cubic-bezier(0, 0, 0, 0.99);
+        animation: FadeInFromBottom 0.3s cubic-bezier(0, 0, 0, 0.99);
+        position: absolute;
+        padding-left: 24px;
+        display: flex;
+        font-size: 16px;
+        justify-content: flex-start;
+        align-items: center;
+        width: calc(100% - 24px);
+        height: 84px;
+        background-color: white;
+        top: 0;
+        left: 0;
+        z-index: 9; }
+      .mdl-stepper--horizontal > .mdl-step .mdl-step__transient {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%; }
+      .mdl-stepper--horizontal > .mdl-step:not(:first-child):not(:last-child) {
+        margin: auto auto; }
+      .mdl-stepper--horizontal > .mdl-step:not(:last-child) {
+        flex: 1; }
+      .mdl-stepper--horizontal > .mdl-step:not(:last-child):after {
+        content: '';
+        position: relative;
+        flex: 1;
+        top: 42px;
+        width: 168px;
+        margin-left: -12px;
+        height: 1px;
+        background-color: rgba(0, 0, 0, 0.1); }
+      .mdl-stepper--horizontal > .mdl-step.mdl-step--completed .mdl-step__title > .mdl-step__title-text {
+        font-weight: bold; }
+      .mdl-stepper--horizontal > .mdl-step:not(:last-child) > .mdl-step__label > .mdl-step__label-indicator:after {
+        display: none; }
+    .mdl-stepper--horizontal .mdl-step__label {
+      top: -48px;
+      flex: initial;
+      margin: 0;
+      padding: 24px;
+      min-height: 132px;
+      transition: 0.025s border-radius linear; }
+      .mdl-stepper--horizontal .mdl-step__label:hover {
+        background-color: rgba(0, 0, 0, 0.06); }
+      .mdl-stepper--horizontal .mdl-step__label:active {
+        padding: 12px;
+        margin: 12px;
+        border-radius: 100%; }
+      .mdl-stepper--horizontal .mdl-step__label > .mdl-step__title {
+        width: initial; }
+      .mdl-stepper--horizontal .mdl-step__label > .mdl-step__title > * {
+        max-width: 120px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis; }
+      .mdl-stepper--horizontal .mdl-step__label > .mdl-step__title > .mdl-step__title-message {
+        position: relative;
+        top: 0;
+        line-height: 14px; }
+      .mdl-stepper--horizontal .mdl-step__label > .mdl-step__label-indicator {
+        margin-top: auto; }
+    .mdl-stepper--horizontal .mdl-step > .mdl-step__content {
+      position: absolute;
+      top: 84px;
+      left: 0;
+      width: calc(100% - 48px);
+      height: calc(100% - 192px);
+      margin: 24px; }
+    .mdl-stepper--horizontal .mdl-step > .mdl-step__actions {
+      position: absolute;
+      top: calc(100% - 84px);
+      left: 0;
+      margin: 0;
+      padding: 24px;
+      width: calc(100% - 48px); }
+      .mdl-stepper--horizontal .mdl-step > .mdl-step__actions [data-stepper-next] {
+        order: 4;
+        margin-left: 8px;
+        margin-right: 0;
+        color: #2196F3;
+        background-color: transparent; }
+      .mdl-stepper--horizontal .mdl-step > .mdl-step__actions [data-stepper-cancel] {
+        order: 3;
+        margin-left: auto; }
+      .mdl-stepper--horizontal .mdl-step > .mdl-step__actions [data-stepper-skip] {
+        order: 2;
+        margin-left: auto; }
+      .mdl-stepper--horizontal .mdl-step > .mdl-step__actions [data-stepper-back] {
+        order: 1;
+        margin-left: 0;
+        margin-right: auto; }
+    .mdl-stepper--horizontal.mdl-stepper--linear > .mdl-step:not(.mdl-step--completed):not(.is-active) .mdl-step__title > .mdl-step__title-text {
+      opacity: .5; } }
 
 /*# sourceMappingURL=stepper.css.map */
