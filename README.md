@@ -100,6 +100,7 @@ Class | Effect | Remarks
 ------|--------|------
 ```mdl-stepper```  | Defines a stepper container. |Required
 ```mdl-stepper--linear```  | Defines the stepper as linear and require users to complete one step in order to move on to the next. | Manually added
+```mdl-stepper--horizontal```  | Defines the stepper as horizontal type, the step name and numbers appear on a horizontal bar. | Manually added
 ```mdl-stepper--feedback```  | Display a transient feedback message after a step is saved. | Manually added
 ```mdl-step```  | Defines a step item inside `mdl-stepper`. | Required
 ```is-active```  | Defines the active step. The first step will be marked as active if you don't set it. | Manually added
