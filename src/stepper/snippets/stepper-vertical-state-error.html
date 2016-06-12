@@ -97,10 +97,6 @@
     }
     steps = stepperElement.querySelectorAll('.mdl-step');
 
-    Stepper.getActive().addEventListener('scroll', function (e) {
-      e.target.scrollTo(0, 0);
-    });
-
     for (var i = 0; i < steps.length; i++) {
       // When user clicks on [data-stepper-next] button of step.          
       steps[i].addEventListener('onstepnext', function (e) {

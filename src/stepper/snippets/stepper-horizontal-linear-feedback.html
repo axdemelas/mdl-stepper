@@ -100,10 +100,6 @@
 
     for (var i = 0; i < steps.length; i++) {
       
-      steps[i].addEventListener('scroll', function (e) {
-        e.target.scrollTo(0, 0);            
-      });
-
       // When user clicks on [data-stepper-next] button of step.          
       steps[i].addEventListener('onstepnext', (function (e, step) {
 
