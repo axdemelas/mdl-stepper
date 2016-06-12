@@ -278,6 +278,12 @@
       if (collection[i].isActive) {
         active = collection[i].id;
       }
+
+      // Prevents the step label to scrolling out of user view on Google Chrome.
+      // More details here: <https://github.com/ahlechandre/mdl-stepper/issues/11 />.
+      stepElements[i].addEventListener('scroll', function (event) {
+        event.target.scrollTo(0, 0);  
+      });
     }
     total = collection.length;
     return {
