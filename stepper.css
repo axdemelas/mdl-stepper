@@ -136,10 +136,6 @@
 
   .mdl-grid .mdl-cell .mdl-stepper {
     margin-left: -16px; } }
-/* STEPPER MOD LINEAR */
-.mdl-stepper--linear .mdl-step__label:hover {
-  background: none; }
-
 /* STEP */
 .mdl-step {
   position: relative; }
@@ -213,6 +209,9 @@
   overflow: hidden !important; }
 
 /* STEP LABEL */
+.mdl-stepper:not(.mdl-stepper--horizontal) .mdl-step__label:hover, .mdl-stepper:not(.mdl-stepper--horizontal) .mdl-step__label:active, .mdl-stepper:not(.mdl-stepper--horizontal) .mdl-step__label:focus {
+  background-color: rgba(0, 0, 0, 0.06); }
+
 .mdl-step__label {
   position: relative;
   -webkit-display: flex;
