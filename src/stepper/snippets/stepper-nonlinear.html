@@ -6,7 +6,7 @@
 </style>
 
 <!-- markup -->
-<ul class="mdl-stepper mdl-stepper--linear mdl-stepper--feedback" id="demo-stepper-vertical-linear-feedback">
+<ul class="mdl-stepper mdl-stepper--horizontal" id="demo-stepper-nonlinear">
   <li class="mdl-step">
     <span class="mdl-step__label">
               <span class="mdl-step__title">
@@ -16,16 +16,15 @@
     <div class="mdl-step__content">
     </div>
     <div class="mdl-step__actions">
-      <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored mdl-button--raised"  data-stepper-next>
+      <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored mdl-button--raised" data-stepper-next>
             Continue
           </button>
       <button class="mdl-button mdl-js-button mdl-js-ripple-effect" data-stepper-cancel>
             Cancel
           </button>
-      <button disabled class="mdl-button mdl-js-button mdl-js-ripple-effect" data-stepper-back>
+      <button class="mdl-button mdl-js-button mdl-js-ripple-effect" data-stepper-back disabled>
             Back
           </button>
-
     </div>
   </li>
   <li class="mdl-step">
@@ -42,7 +41,7 @@
       <button class="mdl-button mdl-js-button mdl-js-ripple-effect" data-stepper-cancel>
             Cancel
           </button>
-      <button disabled class="mdl-button mdl-js-button mdl-js-ripple-effect" data-stepper-back>
+      <button class="mdl-button mdl-js-button mdl-js-ripple-effect" data-stepper-back>
             Back
           </button>
     </div>
@@ -61,7 +60,7 @@
       <button class="mdl-button mdl-js-button mdl-js-ripple-effect" data-stepper-cancel>
             Cancel
           </button>
-      <button disabled class="mdl-button mdl-js-button mdl-js-ripple-effect" data-stepper-back>
+          <button class="mdl-button mdl-js-button mdl-js-ripple-effect" data-stepper-back>
             Back
           </button>
     </div>
@@ -71,7 +70,7 @@
 <!-- script -->
 <script>
   (function () {
-    var selector = '.mdl-stepper#demo-stepper-vertical-linear-feedback';
+    var selector = '.mdl-stepper#demo-stepper-nonlinear';
     // Select stepper container element      
     var stepperElement = document.querySelector(selector);
     var Stepper;
@@ -93,9 +92,11 @@
       steps[i].addEventListener('onstepnext', function (e) {
         // {element}.MaterialStepper.next() change the state of current step to "completed" 
         // and move one step forward.        
-        setTimeout(function () {
-          Stepper.next();              
-        }, 3000);
+        Stepper.next();              
+      });
+      // When user clicks on [data-stepper-back] button of step.          
+      steps[i].addEventListener('onstepback', function (e) {
+        Stepper.back();              
       });
     }
 
@@ -106,10 +107,30 @@
       if (!toast) return;
 
       toast.MaterialSnackbar.showSnackbar({
-        message: 'Stepper vertical + linear + feedback are completed',
+        message: 'Stepper non-linear are completed',
         timeout: 4000,
         actionText: 'Ok'
       });
     });
   })();
+  
+  (function () {
+    var toggle = document.querySelector('[href="#stepper-nonlinear-toggle"]');
+    var snippetDirections = document.querySelector('#snippet-stepper-nonlinear');
+    var stepperElement = snippetDirections.querySelector('.mdl-stepper');
+    var cssClassHorizontal = 'mdl-stepper--horizontal';
+
+    toggle.addEventListener('click', function (event) {
+      event.preventDefault();
+      
+      if (!stepperElement) return;
+
+      if (stepperElement.classList.contains(cssClassHorizontal)) {
+        stepperElement.classList.remove(cssClassHorizontal);
+      } else {
+        stepperElement.classList.add(cssClassHorizontal);        
+      }
+    });
+  })();
+
 </script>

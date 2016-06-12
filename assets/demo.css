@@ -260,3 +260,8 @@ table + .stepper-gist {
 .mdl-stepper--horizontal {
 	min-height: 450px;
 }
+
+.mdl-stepper--horizontal [data-stepper-skip] {
+	margin-right: auto!important;	
+	margin-left: 0!important;	
+}

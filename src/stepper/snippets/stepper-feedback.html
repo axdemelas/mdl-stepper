@@ -6,8 +6,8 @@
 </style>
 
 <!-- markup -->
-<ul class="mdl-stepper mdl-stepper--linear" id="demo-stepper-vertical-linear">
-  <li class="mdl-step">
+<ul class="mdl-stepper mdl-stepper--feedback mdl-stepper--horizontal" id="demo-stepper-feedback">
+  <li class="mdl-step" data-step-transient-message="Step 1 looks great! Step 2 is coming up.">
     <span class="mdl-step__label">
               <span class="mdl-step__title">
                 <span class="mdl-step__title-text">Title of step 1</span>
@@ -22,15 +22,28 @@
       <button class="mdl-button mdl-js-button mdl-js-ripple-effect" data-stepper-cancel>
             Cancel
           </button>
+      <button disabled class="mdl-button mdl-js-button mdl-js-ripple-effect" data-stepper-back>
+            Back
+          </button>
+
     </div>
   </li>
-  <li class="mdl-step">
+  <li class="mdl-step" data-step-transient-message="Step 2 looks great! Step 3 is coming up.">
     <span class="mdl-step__label">
           <span class="mdl-step__title">
             <span class="mdl-step__title-text">Title longer than it should be</span>
     </span>
     </span>
-    <div class="mdl-step__content"></div>
+    <div class="mdl-step__content">
+      <form action="#">
+        <div class="mdl-textfield mdl-js-textfield">
+          <input autocomplete="off" class="mdl-textfield__input" type="text" id="stepper-transient-message">
+          <label class="mdl-textfield__label" for="stepper-transient-message">Transient message for current step</label>
+          <span class="mdl-textfield__error">Invalid input</span>
+        </div>
+      </form>          
+
+    </div>
     <div class="mdl-step__actions">
       <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored mdl-button--raised" data-stepper-next>
             Continue
@@ -38,9 +51,12 @@
       <button class="mdl-button mdl-js-button mdl-js-ripple-effect" data-stepper-cancel>
             Cancel
           </button>
+      <button disabled class="mdl-button mdl-js-button mdl-js-ripple-effect" data-stepper-back>
+            Back
+          </button>
     </div>
   </li>
-  <li class="mdl-step">
+  <li class="mdl-step" data-step-transient-message="Step 3 looks great! Thanks.">
     <span class="mdl-step__label">
           <span class="mdl-step__title">
             <span class="mdl-step__title-text">Title of step 3</span>
@@ -54,6 +70,9 @@
       <button class="mdl-button mdl-js-button mdl-js-ripple-effect" data-stepper-cancel>
             Cancel
           </button>
+      <button disabled class="mdl-button mdl-js-button mdl-js-ripple-effect" data-stepper-back>
+            Back
+          </button>
     </div>
   </li>
 </ul>
@@ -61,12 +80,13 @@
 <!-- script -->
 <script>
   (function () {
-    var selector = '.mdl-stepper#demo-stepper-vertical-linear';
+    var selector = '.mdl-stepper#demo-stepper-feedback';
     // Select stepper container element      
     var stepperElement = document.querySelector(selector);
     var Stepper;
     var steps;
-    
+    var inputTransientMessage /** @type {HTMLElement} */;
+
     if (!stepperElement) return;
     
     // Get the MaterialStepper instance of element to control it.          
@@ -79,12 +99,24 @@
     steps = stepperElement.querySelectorAll('.mdl-step');
 
     for (var i = 0; i < steps.length; i++) {
+      
       // When user clicks on [data-stepper-next] button of step.          
-      steps[i].addEventListener('onstepnext', function (e) {
-        // {element}.MaterialStepper.next() change the state of current step to "completed" 
-        // and move one step forward.        
-        Stepper.next();              
-      });
+      steps[i].addEventListener('onstepnext', (function (e, step) {
+
+        return function () {
+          // {element}.MaterialStepper.next() change the state of current step to "completed" 
+          // and move one step forward.        
+          inputTransientMessage = step.querySelector('#stepper-transient-message');
+          
+          if (inputTransientMessage && inputTransientMessage.value.length) {
+            step.setAttribute('data-step-transient-message', inputTransientMessage.value);
+          }
+
+          setTimeout(function () {
+            Stepper.next();              
+          }, 3000);
+        };
+      })(event, steps[i]));
     }
 
     // When all steps are completed this event is dispatched.          
@@ -94,10 +126,30 @@
       if (!toast) return;
 
       toast.MaterialSnackbar.showSnackbar({
-        message: 'Stepper vertical + linear are completed',
+        message: 'Stepper feedback are completed',
         timeout: 4000,
         actionText: 'Ok'
       });
     });
   })();
+
+  (function () {
+    var toggle = document.querySelector('[href="#stepper-feedback-toggle"]');
+    var snippetDirections = document.querySelector('#snippet-stepper-feedback');
+    var stepperElement = snippetDirections.querySelector('.mdl-stepper');
+    var cssClassHorizontal = 'mdl-stepper--horizontal';
+
+    toggle.addEventListener('click', function (event) {
+      event.preventDefault();
+      
+      if (!stepperElement) return;
+
+      if (stepperElement.classList.contains(cssClassHorizontal)) {
+        stepperElement.classList.remove(cssClassHorizontal);
+      } else {
+        stepperElement.classList.add(cssClassHorizontal);        
+      }
+    });
+  })();
+
 </script>

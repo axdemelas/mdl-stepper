@@ -6,30 +6,14 @@
 </style>
 
 <!-- markup -->
-<ul class="mdl-stepper" id="demo-stepper-vertical-state-error">
+<ul class="mdl-stepper mdl-stepper--horizontal" id="demo-stepper-step-optional">
   <li class="mdl-step">
     <span class="mdl-step__label">
               <span class="mdl-step__title">
                 <span class="mdl-step__title-text">Title of step 1</span>
-    <span class="mdl-step__title-message">Greater than 10</span>
     </span>
     </span>
     <div class="mdl-step__content">
-      <div class="mdl-grid">
-        <div class="mdl-cell mdl-cell--12-col">
-          <form action="#">
-            <div class="mdl-textfield mdl-js-textfield">
-              <input autocomplete="off" class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="stepper-vertical-error-number">
-              <label class="mdl-textfield__label" for="stepper-vertical-error-number">Test less than 10</label>
-              <span class="mdl-textfield__error">Input is not a number!</span>
-            </div>
-            <div class="mdl-textfield mdl-js-textfield">
-              <input autocomplete="off" class="mdl-textfield__input" type="text" id="stepper-vertical-error-message">
-              <label class="mdl-textfield__label" for="stepper-vertical-error-message">Alert message</label>
-            </div>
-          </form>          
-        </div>
-      </div>
     </div>
     <div class="mdl-step__actions">
       <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored mdl-button--raised" data-stepper-next>
@@ -40,10 +24,11 @@
           </button>
     </div>
   </li>
-  <li class="mdl-step">
+  <li class="mdl-step mdl-step--optional">
     <span class="mdl-step__label">
           <span class="mdl-step__title">
             <span class="mdl-step__title-text">Title of step 2</span>
+    <span class="mdl-step__title-message">Optional</span>
     </span>
     </span>
     <div class="mdl-step__content"></div>
@@ -53,6 +38,10 @@
           </button>
       <button class="mdl-button mdl-js-button mdl-js-ripple-effect" data-stepper-cancel>
             Cancel
+          </button>
+
+      <button class="mdl-button mdl-js-button mdl-js-ripple-effect" data-stepper-skip>
+            Skip
           </button>
     </div>
   </li>
@@ -77,15 +66,12 @@
 <!-- script -->
 <script>
   (function () {
-    var selector = '.mdl-stepper#demo-stepper-vertical-state-error';
+    var selector = '.mdl-stepper#demo-stepper-step-optional';
     // Select stepper container element      
     var stepperElement = document.querySelector(selector);
-    var inputNumber = document.querySelector('#stepper-vertical-error-number');
-    var inputMessage = document.querySelector('#stepper-vertical-error-message');
     var Stepper;
     var steps;
-    var form;
-
+    
     if (!stepperElement) return;
     
     // Get the MaterialStepper instance of element to control it.          
@@ -100,14 +86,13 @@
     for (var i = 0; i < steps.length; i++) {
       // When user clicks on [data-stepper-next] button of step.          
       steps[i].addEventListener('onstepnext', function (e) {
-        
-        if (inputNumber.value > 10) {
-          // {element}.MaterialStepper.next() change the state of current step to "completed" 
-          // and move one step forward.        
-          Stepper.next();                        
-        } else {
-          Stepper.error((inputMessage.value.length ? inputMessage.value : 'Your alert message'));
-        }
+        // {element}.MaterialStepper.next() change the state of current step to "completed" 
+        // and move one step forward.        
+        Stepper.next();              
+      });
+      // When user clicks on [data-stepper-skip] button of step.          
+      steps[i].addEventListener('onstepskip', function (e) {
+        Stepper.skip();              
       });
     }
 
@@ -118,10 +103,30 @@
       if (!toast) return;
 
       toast.MaterialSnackbar.showSnackbar({
-        message: 'Stepper vertical + error state are completed',
+        message: 'Stepper + optional step are completed',
         timeout: 4000,
         actionText: 'Ok'
       });
     });
   })();
+
+  (function () {
+    var toggle = document.querySelector('[href="#stepper-step-optional-toggle"]');
+    var snippetDirections = document.querySelector('#snippet-stepper-step-optional');
+    var stepperElement = snippetDirections.querySelector('.mdl-stepper');
+    var cssClassHorizontal = 'mdl-stepper--horizontal';
+
+    toggle.addEventListener('click', function (event) {
+      event.preventDefault();
+      
+      if (!stepperElement) return;
+
+      if (stepperElement.classList.contains(cssClassHorizontal)) {
+        stepperElement.classList.remove(cssClassHorizontal);
+      } else {
+        stepperElement.classList.add(cssClassHorizontal);        
+      }
+    });
+  })();
+  
 </script>

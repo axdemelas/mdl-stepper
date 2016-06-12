@@ -6,15 +6,30 @@
 </style>
 
 <!-- markup -->
-<ul class="mdl-stepper mdl-stepper--linear" id="demo-stepper-vertical-step-editable">
-  <li class="mdl-step mdl-step--editable">
+<ul class="mdl-stepper mdl-stepper--horizontal" id="demo-stepper-state-error">
+  <li class="mdl-step">
     <span class="mdl-step__label">
               <span class="mdl-step__title">
                 <span class="mdl-step__title-text">Title of step 1</span>
-                <span class="mdl-step__title-message">Edit this step later</span>
+    <span class="mdl-step__title-message">Greater than 10</span>
     </span>
     </span>
     <div class="mdl-step__content">
+      <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--12-col">
+          <form action="#">
+            <div class="mdl-textfield mdl-js-textfield">
+              <input autocomplete="off" class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="stepper-vertical-error-number">
+              <label class="mdl-textfield__label" for="stepper-vertical-error-number">Test less than 10</label>
+              <span class="mdl-textfield__error">Input is not a number!</span>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield">
+              <input autocomplete="off" class="mdl-textfield__input" type="text" id="stepper-vertical-error-message">
+              <label class="mdl-textfield__label" for="stepper-vertical-error-message">Alert message</label>
+            </div>
+          </form>          
+        </div>
+      </div>
     </div>
     <div class="mdl-step__actions">
       <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored mdl-button--raised" data-stepper-next>
@@ -28,7 +43,7 @@
   <li class="mdl-step">
     <span class="mdl-step__label">
           <span class="mdl-step__title">
-            <span class="mdl-step__title-text">Title longer than it should be</span>
+            <span class="mdl-step__title-text">Title of step 2</span>
     </span>
     </span>
     <div class="mdl-step__content"></div>
@@ -62,12 +77,15 @@
 <!-- script -->
 <script>
   (function () {
-    var selector = '.mdl-stepper#demo-stepper-vertical-step-editable';
+    var selector = '.mdl-stepper#demo-stepper-state-error';
     // Select stepper container element      
     var stepperElement = document.querySelector(selector);
+    var inputNumber = document.querySelector('#stepper-vertical-error-number');
+    var inputMessage = document.querySelector('#stepper-vertical-error-message');
     var Stepper;
     var steps;
-    
+    var form;
+
     if (!stepperElement) return;
     
     // Get the MaterialStepper instance of element to control it.          
@@ -82,9 +100,14 @@
     for (var i = 0; i < steps.length; i++) {
       // When user clicks on [data-stepper-next] button of step.          
       steps[i].addEventListener('onstepnext', function (e) {
-        // {element}.MaterialStepper.next() change the state of current step to "completed" 
-        // and move one step forward.        
-        Stepper.next();              
+        
+        if (inputNumber.value > 10) {
+          // {element}.MaterialStepper.next() change the state of current step to "completed" 
+          // and move one step forward.        
+          Stepper.next();                        
+        } else {
+          Stepper.error((inputMessage.value.length ? inputMessage.value : 'Your alert message'));
+        }
       });
     }
 
@@ -95,10 +118,30 @@
       if (!toast) return;
 
       toast.MaterialSnackbar.showSnackbar({
-        message: 'Stepper vertical + editable step are completed',
+        message: 'Stepper + error state are completed',
         timeout: 4000,
         actionText: 'Ok'
       });
     });
   })();
+
+  (function () {
+    var toggle = document.querySelector('[href="#stepper-step-state-error-toggle"]');
+    var snippetDirections = document.querySelector('#snippet-stepper-step-state-error');
+    var stepperElement = snippetDirections.querySelector('.mdl-stepper');
+    var cssClassHorizontal = 'mdl-stepper--horizontal';
+
+    toggle.addEventListener('click', function (event) {
+      event.preventDefault();
+      
+      if (!stepperElement) return;
+
+      if (stepperElement.classList.contains(cssClassHorizontal)) {
+        stepperElement.classList.remove(cssClassHorizontal);
+      } else {
+        stepperElement.classList.add(cssClassHorizontal);        
+      }
+    });
+  })();
+  
 </script>
