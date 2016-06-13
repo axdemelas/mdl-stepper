@@ -1,6 +1,6 @@
 /**
  * material-design-lite-stepper - A Material Design Lite Stepper component polyfill
- * @version v1.0.0
+ * @version v1.1.1
  * @license MIT
  * @author Alexandre Thebaldi <ahlechandre@gmail.com>.
  * @link https://github.com/ahlechandre/mdl-stepper
