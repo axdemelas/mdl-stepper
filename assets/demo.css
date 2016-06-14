@@ -140,12 +140,12 @@ p {
 	opacity: 1;
 }
 
-.mdl-step__content {
+.mdl-step:not(.mdl-step--demo-with-form) > .mdl-step__content {
 	background-color: rgba(0, 0, 0, 0.2);
 	text-align: center;
 }
 
-#demo-error-state-content {
+.mdl-step--demo-with-form > .mdl-step__content {
 	background-color: transparent;
 	text-align: initial;
 }
