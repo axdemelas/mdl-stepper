@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="500px"
+	 height="124.538px" viewBox="0 0 500 124.538" enable-background="new 0 0 500 124.538" xml:space="preserve">
+<g id="Layer_1">
+	<rect fill="#F8C110" width="500" height="124.538"/>
+</g>
+<g id="Layer_2">
+	<rect x="12.722" y="20.879" fill="#FFFFFF" width="474.557" height="55.155"/>
+</g>
+<g id="Layer_3">
+</g>
+<g id="Layer_4">
+</g>
+<g id="Layer_7">
+	<g>
+		<defs>
+			<rect id="SVGID_1_" x="244.947" y="20.879" width="116.213" height="55.155"/>
+		</defs>
+		<clipPath id="SVGID_2_">
+			<use xlink:href="#SVGID_1_"  overflow="visible"/>
+		</clipPath>
+		<ellipse opacity="0.06" clip-path="url(#SVGID_2_)" cx="304.369" cy="50.801" rx="56.842" ry="57.316"/>
+	</g>
+</g>
+<g id="Layer_5">
+	<ellipse fill="#2391C0" cx="51.382" cy="49.457" rx="13.402" ry="13.036"/>
+	<ellipse fill="#2391C0" cx="250" cy="49.457" rx="13.402" ry="13.036"/>
+	<ellipse fill="#B3B3B3" cx="448.618" cy="49.457" rx="13.402" ry="13.036"/>
+	<line opacity="0.06" fill="none" stroke="#000000" stroke-miterlimit="10" x1="283.368" y1="50.003" x2="415.619" y2="50.003"/>
+	<line opacity="0.06" fill="none" stroke="#000000" stroke-miterlimit="10" x1="84.158" y1="50.003" x2="216.409" y2="50.003"/>
+</g>
+<g id="Layer_6">
+	<path fill="none" d="M226,36h48v48h-48V36z"/>
+</g>
+</svg>

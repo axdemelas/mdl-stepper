@@ -33,7 +33,7 @@
       <nav class="mdl-navigation">
         <a class="mdl-navigation__link" href="../index.html">About</a>
         <a class="mdl-navigation__link" href="../started/index.html">Get started</a>
-          <a class="mdl-navigation__link" href="../demo/index.html">Demonstration</a>
+        <a class="mdl-navigation__link" href="../demo/index.html">Demonstration</a>
         <a class="mdl-navigation__link" href="./index.html">Component</a>
       </nav>
     </div>
@@ -78,7 +78,10 @@
 
               <ul class="stepper-menu-link mdl-list">
                 <li class="mdl-list__item">
-                  <span class="mdl-list__item-primary-content"><a href="#stepper-directions">Stepper directions</a></span>
+                  <span class="mdl-list__item-primary-content"><a href="#stepper-type-horizontal">Horizontal steppers</a></span>
+                </li>
+                <li class="mdl-list__item">
+                  <span class="mdl-list__item-primary-content"><a href="#stepper-type-vertical">Vertical steppers</a></span>
                 </li>
                 <li class="mdl-list__item">
                   <span class="mdl-list__item-primary-content"><a href="#stepper-linear">Linear stepper</a></span>
@@ -101,21 +104,32 @@
               </ul>
             </div>
 
-          <!-- DIRECTIONS STEPPER -->
-            <div class="mdl-cell mdl-cell--12-col" id="stepper-directions">
-              <h1 class="stepper-subtitle">Stepper directions</h1>
-              <p class="stepper-label">Horizontal</p>
-              <p class="stepper-guideline-quote">Horizontal steppers are ideal when the contents of one step depend on an earlier step. On horizontal steppers, the step name and numbers appear on a horizontal bar.</p>
-              <p>
-                By default, the horiztonal steppers width is defined as 840px. To change width dimension you only need to update the value of property <code>max-width</code>. Also, you can custom the height size of horizontal steppers with <code>min-height</code> property. 
-              </p>
-              <p class="stepper-note">Horizontal stepper is only available for large screens (e.g. desktop). In other words, the screen must have, at least, 840px.</p>
+            <!-- HORIZONTAL STEPPERS -->
+            <div class="mdl-cell mdl-cell--12-col" id="stepper-type-horizontal">
+              <h1 class="stepper-subtitle">Horizontal steppers</h1>
+              <p class="stepper-guideline-quote">Horizontal steppers are ideal when the contents of one step depend on an earlier step. On horizontal steppers,
+                the step name and numbers appear on a horizontal bar.</p>
 
-              <p class="stepper-label">Vertical</p>
-              <p class="stepper-guideline-quote">Vertical steppers are designed for narrow screen sizes. They are ideal for mobile.</p>
-              
+              <div class="stepper-snippet" id="snippet-svg-stepper-horizontal" data-content="../docs/_pages/svg/stepper-horizontal.svg"></div>
+
               <p>
-                By default, the vertical steppers width is defined as 800px. To change width dimension you only need to update the value of property <code>max-width</code>. 
+                By default, the horiztonal steppers width is defined as 840px. To change width dimension you only need to update the value
+                of property <code>max-width</code>. Also, you can custom the height size of horizontal steppers
+                with <code>min-height</code> property.
+              </p>
+              <p class="stepper-note">Horizontal stepper is only available for large screens (e.g. desktop). In other words, the screen must have,
+                at least, 840px.</p>
+            </div>
+
+            <!-- VERTICAL STEPPERS -->
+            <div class="mdl-cell mdl-cell--12-col" id="stepper-type-vertical">
+              <h1 class="stepper-subtitle">Vertical steppers</h1>
+              <p class="stepper-guideline-quote">Vertical steppers are designed for narrow screen sizes. They are ideal for mobile.</p>
+              <div class="stepper-snippet" id="snippet-svg-stepper-vertical" data-content="../docs/_pages/svg/stepper-vertical.svg"></div>
+
+              <p>
+                By default, the vertical steppers width is defined as 800px. To change width dimension you only need to update the value
+                of property <code>max-width</code>.
               </p>
             </div>
 
@@ -124,15 +138,12 @@
               <h1 class="stepper-subtitle">Linear stepper</h1>
               <p class="stepper-guideline-quote">Linear steppers require users to complete one step in order to move on to the next.</p>
 
-              <p>
-                <a href="#stepper-linear-toggle" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored">Toggle horizontal/vertical</a>
-              </p>
-
               <div class="stepper-snippet" id="snippet-stepper-linear" data-content="../src/stepper/snippets/stepper-linear.html"></div>
 
               <p>
-                <a href="https://github.com/ahlechandre/mdl-stepper/tree/gh-pages/src/stepper/snippets/stepper-linear.html"
-                  target="_blank" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">get linear code</a>
+                <a href="#stepper-linear-toggle" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">Toggle horizontal/vertical</a>
+                <a href="https://github.com/ahlechandre/mdl-stepper/tree/gh-pages/src/stepper/snippets/stepper-linear.html" target="_blank"
+                  class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored mdl-button--raised">get linear code</a>
               </p>
 
             </div>
@@ -142,15 +153,12 @@
               <h1 class="stepper-subtitle">Non-linear stepper</h1>
               <p class="stepper-guideline-quote">Non-linear steppers allow users to enter a multi-step flow at any point.</p>
 
-              <p>
-                <a href="#stepper-nonlinear-toggle" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored">Toggle horizontal/vertical</a>
-              </p>
-
               <div class="stepper-snippet" id="snippet-stepper-nonlinear" data-content="../src/stepper/snippets/stepper-nonlinear.html"></div>
 
               <p>
-                <a href="https://github.com/ahlechandre/mdl-stepper/tree/gh-pages/src/stepper/snippets/stepper-nonlinear.html"
-                  target="_blank" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">get non-linear code</a>
+                <a href="#stepper-nonlinear-toggle" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">Toggle horizontal/vertical</a>
+                <a href="https://github.com/ahlechandre/mdl-stepper/tree/gh-pages/src/stepper/snippets/stepper-nonlinear.html" target="_blank"
+                  class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored">get non-linear code</a>
               </p>
 
             </div>
@@ -161,15 +169,12 @@
               <p class="stepper-guideline-quote">Steppers may display a transient feedback message after a step is saved. Stepper feedback should only be used
                 if there is a long latency between steps.</p>
 
-              <p>
-                <a href="#stepper-feedback-toggle" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored">Toggle horizontal/vertical</a>
-              </p>
-
               <div class="stepper-snippet" id="snippet-stepper-feedback" data-content="../src/stepper/snippets/stepper-feedback.html"></div>
 
               <p>
-                <a href="https://github.com/ahlechandre/mdl-stepper/tree/gh-pages/src/stepper/snippets/stepper-feedback.html"
-                  target="_blank" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">get feedback code</a>
+                <a href="#stepper-feedback-toggle" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">Toggle horizontal/vertical</a>
+                <a href="https://github.com/ahlechandre/mdl-stepper/tree/gh-pages/src/stepper/snippets/stepper-feedback.html" target="_blank"
+                  class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored">get feedback code</a>
               </p>
 
             </div>
@@ -180,17 +185,14 @@
               <p class="stepper-guideline-quote">Editable steps allow users to return later to edit a step. These are ideal for workflows that involve editing
                 steps within a session.</p>
 
-              <p>
-                <a href="#stepper-step-editable-toggle" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored">Toggle horizontal/vertical</a>
-              </p>
-
               <div class="stepper-snippet" id="snippet-stepper-step-editable" data-content="../src/stepper/snippets/stepper-step-editable.html"></div>
 
               <p>
-                <a href="https://github.com/ahlechandre/mdl-stepper/tree/gh-pages/src/stepper/snippets/stepper-step-editable.html"
-                  target="_blank" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">get step editable code</a>
+                <a href="#stepper-step-editable-toggle" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">Toggle horizontal/vertical</a>
+                <a href="https://github.com/ahlechandre/mdl-stepper/tree/gh-pages/src/stepper/snippets/stepper-step-editable.html" target="_blank"
+                  class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored">get step editable code</a>
               </p>
-                
+
             </div>
 
             <!-- OPTIONAL STEPS -->
@@ -203,15 +205,12 @@
                 because this message may vary according to many languages.
               </p>
 
-              <p>
-                <a href="#stepper-step-optional-toggle" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored">Toggle horizontal/vertical</a>
-              </p>
-
               <div class="stepper-snippet" id="snippet-stepper-step-optional" data-content="../src/stepper/snippets/stepper-step-optional.html"></div>
 
               <p>
-                <a href="https://github.com/ahlechandre/mdl-stepper/tree/gh-pages/src/stepper/snippets/stepper-step-optional.html"
-                  target="_blank" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">get optional step code</a>
+                <a href="#stepper-step-optional-toggle" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">Toggle horizontal/vertical</a>
+                <a href="https://github.com/ahlechandre/mdl-stepper/tree/gh-pages/src/stepper/snippets/stepper-step-optional.html" target="_blank"
+                  class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored">get optional step code</a>
               </p>
 
             </div>
@@ -220,15 +219,12 @@
             <div class="mdl-cell mdl-cell--12-col" id="stepper-error-state">
               <h1 class="stepper-subtitle">Error state</h1>
 
-              <p>
-                <a href="#stepper-step-state-error-toggle" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored">Toggle horizontal/vertical</a>
-              </p>
-
               <div class="stepper-snippet" id="snippet-stepper-step-state-error" data-content="../src/stepper/snippets/stepper-step-state-error.html"></div>
 
               <p>
-                <a href="https://github.com/ahlechandre/mdl-stepper/tree/gh-pages/src/stepper/snippets/stepper-step-state-error.html"
-                  target="_blank" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">get step + error state code</a>
+                <a href="#stepper-step-state-error-toggle" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">Toggle horizontal/vertical</a>
+                <a href="https://github.com/ahlechandre/mdl-stepper/tree/gh-pages/src/stepper/snippets/stepper-step-state-error.html" target="_blank"
+                  class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored">get step + error state code</a>
               </p>
 
             </div>
@@ -316,7 +312,7 @@
       window.addEventListener('load', getSnippets);
     })();
   </script>
-<script>
+  <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
