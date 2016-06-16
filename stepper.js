@@ -53,6 +53,31 @@
 	 * @author Alexandre Thebaldi <ahlechandre@gmail.com>.
 	 * @link https://github.com/ahlechandre/mdl-stepper
 	 */
+	// Issue: https://github.com/ahlechandre/mdl-stepper/issues/14
+	(function () {
+	  if (typeof window.CustomEvent === 'function') return;
+
+	  /**
+	   * Polyfill for CustomEvent in Internet Explorer 9 and higher.
+	   * @param {string} event The event name.
+	   * @param {Object} params Options of event.
+	   * @return {Object}
+	   */
+	  function CustomEvent(event, params) {
+	    /** @type {Object} */
+	    var _event;
+	    params = params || {
+	      bubbles: false,
+	      cancelable: false,
+	      detail: undefined
+	    };
+	    _event = document.createEvent('CustomEvent');
+	    _event.initCustomEvent(event, params.bubbles, params.cancelable, params.detail);
+	    return _event;
+	  }
+	  CustomEvent.prototype = window.Event.prototype;
+	  window.CustomEvent = CustomEvent;
+	})();
 
 	(function () {
 	  'use strict';
