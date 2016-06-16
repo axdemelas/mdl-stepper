@@ -48,9 +48,8 @@
 
 	/**
 	 * MDL Stepper - A library that implements to the Material Design Lite (MDL) a polyfill for stepper
-	 * 							 component specified by Material Design.
-	 * 
-	 * @version v1.1.1
+	 * component specified by Material Design.
+	 * @version v1.1.3
 	 * @author Alexandre Thebaldi <ahlechandre@gmail.com>.
 	 * @link https://github.com/ahlechandre/mdl-stepper
 	 */
@@ -74,23 +73,20 @@
 	    this.init();
 	  }
 
-	  window['MaterialStepper'] = MaterialStepper;
+	  window.MaterialStepper = MaterialStepper;
 
 	  /**
 	   * Store properties of stepper.
-	   * 
 	   * @private
 	   */
 	  MaterialStepper.prototype.Stepper_ = {};
 
 	  /**
 	   * Get properties of stepper.
-	   * 
-	   * @returns {Object}
+	   * @return {Object}
 	   * @private
 	   */
 	  MaterialStepper.prototype.getStepper_ = function () {
-
 	    return {
 	      isLinear: this.element_.classList.contains(this.CssClasses_.STEPPER_LINEAR),
 	      hasFeedback: this.element_.classList.contains(this.CssClasses_.STEPPER_FEEDBACK)
@@ -99,7 +95,6 @@
 
 	  /**
 	   * Store strings for steps states.
-	   *
 	   * @enum {string}
 	   * @private
 	   */
@@ -203,146 +198,164 @@
 
 	  /**
 	   * Returns the label indicator for referred to the passed step.
-	   * 
-	   * @param {MaterialStepper.Steps_.collection.<step>} step The step that will get the label indicator
-	   * @returns {HTMLElement}
+	   * @param {MaterialStepper.Steps_.collection.<step>} step The step that will get
+	   *                                                        the label indicator.
+	   * @return {HTMLElement}
 	   * @private
 	   */
 	  MaterialStepper.prototype.getIndicatorElement_ = function (step) {
-	    var indicatorElement /** @type {HTMLElement} */;
-	    var indicatorContent /** @type {HTMLElement} */;
+	    /** @type {HTMLElement} */
+	    var indicatorElement;
+	    /** @type {HTMLElement} */
+	    var indicatorContent;
 	    indicatorElement = document.createElement('span');
-	    indicatorContent = this.getIndicatorContentNormal_(step.label_indicator_text);
+	    indicatorContent = this.getIndicatorContentNormal_(step.labelndicatorText);
 	    indicatorElement.classList.add(this.CssClasses_.STEP_LABEL_INDICATOR);
 	    indicatorElement.appendChild(indicatorContent);
-
 	    return indicatorElement;
 	  };
 
 	  /**
 	   * Create a new element that's represent "normal" label indicator.
-	   * 
 	   * @param {string} text The text content of indicator (e.g. 1, 2..N).
-	   * @returns {HTMLElement}
+	   * @return {HTMLElement}
 	   * @private
 	   */
 	  MaterialStepper.prototype.getIndicatorContentNormal_ = function (text) {
-	    var normal /** @type {HTMLElement} */;
+	    /** @type {HTMLElement} */
+	    var normal;
 	    normal = document.createElement('span');
 	    normal.classList.add(this.CssClasses_.STEP_LABEL_INDICATOR_CONTENT);
 	    normal.textContent = text;
-
 	    return normal;
 	  };
 
 	  /**
 	   * Create a new element that's represent "completed" label indicator.
-	   * 
 	   * @param {boolean} isEditable Flag to check if step is of editable type.
-	   * @returns {HTMLElement}
+	   * @return {HTMLElement}
 	   * @private
 	   */
 	  MaterialStepper.prototype.getIndicatorContentCompleted_ = function (isEditable) {
 	    // Creates a new material icon to represent the completed step.
-	    var completed /** @type {HTMLElement} */;
+	    /** @type {HTMLElement} */
+	    var completed;
 	    completed = document.createElement('i');
 	    completed.classList.add('material-icons', this.CssClasses_.STEP_LABEL_INDICATOR_CONTENT);
 	    // If step is editable the icon used will be "edit",
 	    // else the icon will be "check".
 	    completed.textContent = isEditable ? 'edit' : 'check';
-
 	    return completed;
 	  };
 
 	  /**
 	   * Create a new element that's represent "error" label indicator.
-	   * 
-	   * @returns {HTMLElement}
+	   * @return {HTMLElement}
 	   * @private
 	   */
 	  MaterialStepper.prototype.getIndicatorContentError_ = function () {
-	    var error /** @type {HTMLElement} */;
+	    /** @type {HTMLElement} */
+	    var error;
 	    error = document.createElement('span');
 	    error.classList.add(this.CssClasses_.STEP_LABEL_INDICATOR_CONTENT);
 	    error.textContent = '!';
-
 	    return error;
 	  };
 
 	  /**
 	   * Defines a new step model.
-	   * 
 	   * @param {HTMLElement} step The step element.
 	   * @param {number} id The unique number for each step.
-	   * @returns {Object}
+	   * @return {Object}
 	   * @private
 	   */
 	  MaterialStepper.prototype.getStepModel_ = function (step, id) {
+	    /** @type {Object} */
 	    var model;
+	    /** @type {string} */
+	    var selectorActionsBack;
+	    /** @type {string} */
+	    var selectorActionsCancel;
+	    /** @type {string} */
+	    var selectorActionsNext;
+	    /** @type {string} */
+	    var selectorActionsSkip;
+	    selectorActionsBack = '[data-' + this.DatasetAttributes_.BACK + ']';
+	    selectorActionsCancel = '[data-' + this.DatasetAttributes_.CANCEL + ']';
+	    selectorActionsNext = '[data-' + this.DatasetAttributes_.CONTINUE + ']';
+	    selectorActionsSkip = '[data-' + this.DatasetAttributes_.SKIP + ']';
 	    model = {};
 	    model.container = step;
 	    model.id = id;
 	    model.label = step.querySelector('.' + this.CssClasses_.STEP_LABEL);
-	    model.label_indicator_text = id;
-	    model.label_title = step.querySelector('.' + this.CssClasses_.STEP_TITLE);
-	    model.label_title_text = step.querySelector('.' + this.CssClasses_.STEP_TITLE_TEXT).textContent;
-	    model.label_title_message = step.querySelector('.' + this.CssClasses_.STEP_TITLE_MESSAGE);
-	    model.label_title_message_text = model.label_title_message ? model.label_title_message.textContent : '';
+	    model.labelndicatorText = id;
+	    model.labelTitle = step.querySelector('.' + this.CssClasses_.STEP_TITLE);
+	    model.labelTitleText = step.querySelector('.' + this.CssClasses_.STEP_TITLE_TEXT).textContent;
+	    model.labelTitleMessage = step.querySelector('.' + this.CssClasses_.STEP_TITLE_MESSAGE);
+	    model.labelTitleMessageText = model.labelTitleMessage ? model.labelTitleMessage.textContent : '';
 	    model.content = step.querySelector('.' + this.CssClasses_.STEP_CONTENT);
 	    model.actions = step.querySelector('.' + this.CssClasses_.STEP_ACTIONS);
-	    model.actions_next = model.actions.querySelector('[data-' + this.DatasetAttributes_.CONTINUE + ']') || null;
-	    model.actions_cancel = model.actions.querySelector('[data-' + this.DatasetAttributes_.CANCEL + ']') || null;
-	    model.actions_skip = model.actions.querySelector('[data-' + this.DatasetAttributes_.SKIP + ']') || null;
-	    model.actions_back = model.actions.querySelector('[data-' + this.DatasetAttributes_.BACK + ']') || null;
-	    model.label_indicator = model.label.querySelector('.' + this.CssClasses_.STEP_LABEL_INDICATOR);
+	    model.actionsBack = model.actions.querySelector(selectorActionsBack) || null;
+	    model.actionsCancel = model.actions.querySelector(selectorActionsCancel) || null;
+	    model.actionsNext = model.actions.querySelector(selectorActionsNext) || null;
+	    model.actionsSkip = model.actions.querySelector(selectorActionsSkip) || null;
+	    model.labelIndicator = model.label.querySelector('.' + this.CssClasses_.STEP_LABEL_INDICATOR);
 
-	    if (!model.label_indicator) {
+	    if (!model.labelIndicator) {
 	      // Creates a new indicator for the label if not exists
-	      model.label_indicator = this.getIndicatorElement_(model);
-	      model.label.appendChild(model.label_indicator);
+	      model.labelIndicator = this.getIndicatorElement_(model);
+	      model.label.appendChild(model.labelIndicator);
 	    }
-	    model.state = step.classList.contains(this.CssClasses_.STEP_COMPLETED) ? this.StepState_.COMPLETED : step.classList.contains(this.CssClasses_.STEP_ERROR) ? this.StepState_.ERROR : this.StepState_.NORMAL;
+
+	    if (step.classList.contains(this.CssClasses_.STEP_COMPLETED)) {
+	      model.state = this.StepState_.COMPLETED;
+	    } else if (step.classList.contains(this.CssClasses_.STEP_ERROR)) {
+	      model.state = this.StepState_.ERROR;
+	    } else {
+	      model.state = this.StepState_.NORMAL;
+	    }
 	    model.isActive = step.classList.contains(this.CssClasses_.IS_ACTIVE);
 	    model.isOptional = step.classList.contains(this.CssClasses_.STEP_OPTIONAL);
 	    model.isEditable = step.classList.contains(this.CssClasses_.STEP_EDITABLE);
-
 	    return model;
 	  };
 
 	  /**
 	   * Get the active step element.
-	   * 
-	   * @returns {HTMLElement}
+	   * @return {HTMLElement}
 	   */
 	  MaterialStepper.prototype.getActive = function () {
-
 	    return this.Steps_.collection[this.Steps_.active - 1].container;
 	  };
 
 	  /**
 	   * Get the active step id.
-	   * 
-	   * @returns {number}
+	   * @return {number}
 	   */
 	  MaterialStepper.prototype.getActiveId = function () {
-
 	    return this.Steps_.collection[this.Steps_.active - 1].id;
 	  };
 
 	  /**
 	   * Load the model of all steps and store inside a collection.
-	   * 
-	   * @returns {Object}
+	   * @return {Object}
 	   * @private
 	   */
 	  MaterialStepper.prototype.getSteps_ = function () {
-	    var collection /** @type {array} */;
-	    var total /** @type {number} */;
-	    var completed /** @type {number} */;
-	    var optional /** @type {number} */;
-	    var active /** @type {number} */;
-	    var stepElements /** @type {HTMLElement} */;
-	    var i /** @type {number} */;
+	    /** @type {array} */
+	    var collection;
+	    /** @type {number} */
+	    var total;
+	    /** @type {number} */
+	    var completed;
+	    /** @type {number} */
+	    var optional;
+	    /** @type {number} */
+	    var active;
+	    /** @type {HTMLElement} */
+	    var stepElements;
+	    /** @type {number} */
+	    var i;
 	    collection = [];
 	    total = 0;
 	    completed = 0;
@@ -368,7 +381,6 @@
 	      });
 	    }
 	    total = collection.length;
-
 	    return {
 	      collection: collection,
 	      total: total,
@@ -380,13 +392,13 @@
 
 	  /**
 	   * Defines a specific step as "active".
-	   * 
 	   * @param {MaterialStepper.Steps_.collection<step>} step A model of step.
-	   * @returns {boolean}
+	   * @return {boolean}
 	   * @private
 	   */
 	  MaterialStepper.prototype.setStepActive_ = function (step) {
-	    var stepsDeactivator /** @type {function} */;
+	    /** @type {function} */
+	    var stepsDeactivator;
 
 	    // The transient effect blocks the stepper to move
 	    if (this.hasTransient()) return false;
@@ -404,23 +416,26 @@
 	    step.container.classList.add(this.CssClasses_.IS_ACTIVE);
 	    step.isActive = true;
 	    this.Steps_.active = step.id;
-
 	    return true;
 	  };
 
 	  /**
 	   * Defines as "active" the first step or a specific id.
-	   * 
 	   * @param {number | undefined} id Unique number of a step.
-	   * @returns {boolean}
+	   * @return {boolean}
 	   * @private
 	   */
 	  MaterialStepper.prototype.setActive_ = function (id) {
-	    var active /** @type {HTMLElement | null} */;
-	    var first /** MaterialStepper.Steps_.collection<step> */;
-	    var i /** @type {number} */;
-	    var moved /** @type {boolean} */;
-	    var step /** MaterialStepper.Steps_.collection<step> */;
+	    /** @type {HTMLElement | null} */
+	    var active;
+	    /** MaterialStepper.Steps_.collection<step> */
+	    var first;
+	    /** @type {number} */
+	    var i;
+	    /** @type {boolean} */
+	    var moved;
+	    /** MaterialStepper.Steps_.collection<step> */
+	    var step;
 
 	    // Return false if specified id is less or equal 0 and bigger than the last step
 	    if (!isNaN(id) && (id > this.Steps_.total || id <= 0)) return false;
@@ -428,7 +443,6 @@
 	    moved = false;
 
 	    if (id) {
-
 	      for (i = 0; i < this.Steps_.total; i++) {
 	        step = this.Steps_.collection[i];
 
@@ -453,36 +467,44 @@
 	      // case the stepper is linear
 	      this.updateLinearStates_();
 	    }
-
 	    return moved;
 	  };
 
 	  /**
 	   * Change the state of a step
-	   * 
 	   * @param {MaterialStepper.Steps_.collection<step>} step The step to be updated.
 	   * @param {string} state The step state ("completed", "error" or "normal").
-	   * @returns {boolean}
+	   * @return {boolean}
 	   * @private
 	   */
 	  MaterialStepper.prototype.updateStepState_ = function (step, state) {
-	    var stateClass /** @type {string} */;
-	    var indicatorContent /** @type {HTMLElement} */;
-	    var currentIndicatorContent /** @type {HTMLElement} */;
-	    var stepperCompleted /** @type {boolean} */;
-	    var hasRequired /** @type {boolean} */;
-	    var stepItem /** @type {MaterialStepper.Steps_.collection<stepItem>} */;
-	    var item /** @type {number} */;
+	    /** @type {string} */
+	    var stateClass;
+	    /** @type {HTMLElement} */
+	    var indicatorContent;
+	    /** @type {HTMLElement} */
+	    var currentIndicatorContent;
+	    /** @type {boolean} */
+	    var stepperCompleted;
+	    /** @type {boolean} */
+	    var hasRequired;
+	    /** @type {MaterialStepper.Steps_.collection<stepItem>} */
+	    var stepItem;
+	    /** @type {number} */
+	    var item;
+	    /** @type {string} */
+	    var selectorIndicator;
+	    selectorIndicator = '.' + this.CssClasses_.STEP_LABEL_INDICATOR_CONTENT;
 
 	    // Can't update the state for the same.
 	    if (step.state === state) return false;
 
 	    // Case the current step state to change is "completed",
-	    // we can decrement the total number of completed.        
+	    // we can decrement the total number of completed.
 	    if (step.state === this.StepState_.COMPLETED) {
 	      this.Steps_.completed -= 1;
 	    }
-	    currentIndicatorContent = step.label_indicator.querySelector('.' + this.CssClasses_.STEP_LABEL_INDICATOR_CONTENT);
+	    currentIndicatorContent = step.labelIndicator.querySelector(selectorIndicator);
 
 	    switch (state) {
 	      case this.StepState_.COMPLETED:
@@ -506,16 +528,20 @@
 	        {
 	          step.container.classList.remove(this.CssClasses_.STEP_COMPLETED);
 	          step.container.classList.remove(this.CssClasses_.STEP_ERROR);
-	          indicatorContent = this.getIndicatorContentNormal_(step.label_indicator_text);
+	          indicatorContent = this.getIndicatorContentNormal_(step.labelndicatorText);
+	          break;
+	        }
+	      default:
+	        {
 	          break;
 	        }
 	    }
 
-	    // "normal" is the default state and don't have specific css class
+	    // "normal" is the default state and don't have specific css class.
 	    if (stateClass) {
 	      step.container.classList.add(stateClass);
 	    }
-	    step.label_indicator.replaceChild(indicatorContent, currentIndicatorContent);
+	    step.labelIndicator.replaceChild(indicatorContent, currentIndicatorContent);
 	    step.state = state;
 
 	    // Case the total number of completed steps
@@ -528,13 +554,14 @@
 	    if (this.Steps_.completed === this.Steps_.total) {
 	      stepperCompleted = true;
 	    } else if (this.Steps_.completed === this.Steps_.total - this.Steps_.optional) {
-
 	      for (item in this.Steps_.collection) {
+	        // eslint guard-for-in.
+	        if (this.Steps_.collection.hasOwnProperty(item)) {
+	          stepItem = this.Steps_.collection[item];
+	          hasRequired = !stepItem.isOptional && stepItem.state !== this.StepState_.COMPLETED;
 
-	        stepItem = this.Steps_.collection[item];
-	        hasRequired = !stepItem.isOptional && stepItem.state !== this.StepState_.COMPLETED;
-
-	        if (hasRequired) break;
+	          if (hasRequired) break;
+	        }
 	      }
 	      stepperCompleted = !hasRequired;
 	    }
@@ -549,253 +576,266 @@
 	  /**
 	   * Change to "completed" the state of all steps previous the "active"
 	   * except the optionals.
-	   * 
-	   * @returns {undefined}
+	   * @return {undefined}
 	   * @private
 	   */
 	  MaterialStepper.prototype.updateLinearStates_ = function () {
-	    var i /** @type {number} */;
+	    /** @type {number} */
+	    var i;
 
 	    for (i = 0; i < this.Steps_.total; i++) {
-
-	      if (!this.Steps_.collection[i].isActive) {
-
+	      if (this.Steps_.collection[i].isActive) {
+	        break;
+	      } else {
 	        if (this.Steps_.collection[i].isOptional) continue;
 
 	        this.updateStepState_(this.Steps_.collection[i], this.StepState_.COMPLETED);
-	      } else {
-	        break;
 	      }
 	    }
 	  };
 
 	  /**
-	   * Move "active" to the previous step. This operation can returns false 
+	   * Move "active" to the previous step. This operation can returns false
 	   * if it does not regress the step.
-	   * 
-	   * @returns {boolean}
+	   * @return {boolean}
 	   */
 	  MaterialStepper.prototype.back = function () {
-	    var moved /** @type {boolean} */;
-	    var moveStep /** @type {function} */;
-	    var model /** @type {string} */;
-	    var step /** @type {MaterialStepper.Steps_.collection<step>} */;
-	    var previous /** @type {MaterialStepper.Steps_.collection<step>} */;
+	    /** @type {boolean} */
+	    var moved;
+	    /** @type {function} */
+	    var moveStep;
+	    /** @type {string} */
+	    var model;
+	    /** @type {MaterialStepper.Steps_.collection<step>} */
+	    var step;
+	    /** @type {MaterialStepper.Steps_.collection<step>} */
+	    var previous;
 	    moved = false;
 	    moveStep = function moveStep(step) {
-	      var stepActivated /** @type {boolean} */;
+	      /** @type {boolean} */
+	      var stepActivated;
 	      stepActivated = this.setActive_(step.id);
 
 	      if (stepActivated) {
-
 	        if (stepActivated && this.Stepper_.hasFeedback) {
 	          // Remove the (feedback) transient effect before move.
 	          this.removeTransientEffect_(step);
 	        }
 	      }
-
 	      return stepActivated;
 	    };
 
 	    for (model in this.Steps_.collection) {
-	      step = this.Steps_.collection[model];
+	      // Rule eslint guard-for-in.
+	      if (this.Steps_.collection.hasOwnProperty(model)) {
+	        step = this.Steps_.collection[model];
 
-	      if (step.isActive) {
-	        previous = this.Steps_.collection[step.id - 2];
+	        if (step.isActive) {
+	          previous = this.Steps_.collection[step.id - 2];
 
-	        if (!previous) return false;
+	          if (!previous) return false;
 
-	        if (this.Stepper_.isLinear) {
-
-	          if (previous.isEditable) {
+	          if (this.Stepper_.isLinear) {
+	            if (previous.isEditable) {
+	              moved = moveStep.bind(this)(previous);
+	            }
+	          } else {
 	            moved = moveStep.bind(this)(previous);
 	          }
-	        } else {
-	          moved = moveStep.bind(this)(previous);
+	          break;
 	        }
-	        break;
 	      }
 	    }
-
 	    return moved;
 	  };
 
 	  /**
-	   * Move "active" to the next if the current step is optional. This operation can returns false 
+	   * Move "active" to the next if the current step is optional. This operation can returns false
 	   * if it does not advances the step.
-	   * 
-	   * @returns {boolean}
+	   * @return {boolean}
 	   */
 	  MaterialStepper.prototype.skip = function () {
-	    var moved /** @type {boolean} */;
-	    var model /** @type {string} */;
-	    var step /** @type {MaterialStepper.Steps_.collection<step>} */;
+	    /** @type {boolean} */
+	    var moved;
+	    /** @type {string} */
+	    var model;
+	    /** @type {MaterialStepper.Steps_.collection<step>} */
+	    var step;
 	    moved = false;
 
 	    for (model in this.Steps_.collection) {
-	      step = this.Steps_.collection[model];
+	      // Rule eslint guard-for-in.
+	      if (this.Steps_.collection.hasOwnProperty(model)) {
+	        step = this.Steps_.collection[model];
 
-	      if (step.isActive) {
+	        if (step.isActive) {
+	          if (step.isOptional) {
+	            moved = this.setActive_(step.id + 1);
 
-	        if (step.isOptional) {
-	          moved = this.setActive_(step.id + 1);
-
-	          if (moved && this.Stepper_.hasFeedback) {
-	            // Remove the (feedback) transient effect before move
-	            this.removeTransientEffect_(step);
+	            if (moved && this.Stepper_.hasFeedback) {
+	              // Remove the (feedback) transient effect before move
+	              this.removeTransientEffect_(step);
+	            }
 	          }
+	          break;
 	        }
-	        break;
 	      }
 	    }
-
 	    return moved;
 	  };
 
 	  /**
-	   * Move "active" to specified step id. 
+	   * Move "active" to specified step id.
 	   * This operation is similar to the MaterialStepper.setActive_(<number>).
-	   * 
 	   * @param {number} id Unique number for step.
-	   * @returns {boolean}
+	   * @return {boolean}
 	   */
 	  MaterialStepper.prototype.goto = function (id) {
-
 	    return this.setActive_(id);
 	  };
 
 	  /**
-	   * Defines the current state of step to "error" and display 
+	   * Defines the current state of step to "error" and display
 	   * an alert message instead of default title message.
-	   *  
 	   * @param {string} message The text content to show with error state.
-	   * @returns {undefined} 
+	   * @return {undefined}
 	   */
 	  MaterialStepper.prototype.error = function (message) {
-	    var model /** @type {string} */;
-	    var step /** @type {MaterialStepper.Steps_.collection<step>} */;
+	    /** @type {string} */
+	    var model;
+	    /** @type {MaterialStepper.Steps_.collection<step>} */
+	    var step;
 
 	    for (model in this.Steps_.collection) {
-	      step = this.Steps_.collection[model];
+	      // Rule eslint guard-for-in.
+	      if (this.Steps_.collection.hasOwnProperty(model)) {
+	        step = this.Steps_.collection[model];
 
-	      if (step.isActive) {
+	        if (step.isActive) {
+	          if (this.Stepper_.hasFeedback) {
+	            // Remove the (feedback) transient effect before move.
+	            this.removeTransientEffect_(step);
+	          }
+	          this.updateStepState_(step, this.StepState_.ERROR);
 
-	        if (this.Stepper_.hasFeedback) {
-	          // Remove the (feedback) transient effect before move.
-	          this.removeTransientEffect_(step);
+	          if (message) {
+	            this.updateTitleMessage_(step, message);
+	          }
+	          // Now dispatch on step the custom event "onsteperror".
+	          this.dispatchEventOnStepError_(step);
+	          break;
 	        }
-	        this.updateStepState_(step, this.StepState_.ERROR);
-
-	        if (message) {
-	          this.updateTitleMessage_(step, message);
-	        }
-	        // Now dispatch on step the custom event "onsteperror". 
-	        this.dispatchEventOnStepError_(step);
-	        break;
 	      }
 	    }
 	  };
 
 	  /**
-	  * Defines current step state to "completed" and move active to the next. 
-	  * This operation can returns false if it does not advance the step. 
-	  * 
-	  * @returns {boolean}
+	  * Defines current step state to "completed" and move active to the next.
+	  * This operation can returns false if it does not advance the step.
+	  * @return {boolean}
 	  */
 	  MaterialStepper.prototype.next = function () {
-	    var moved /** @type {boolean} */;
-	    var step /** @type {MaterialStepper.Steps_.collection<step>} */;
-	    var activate /** @type {number} */;
-	    var model /** @type {string} */;
-	    var item /** @type {string} */;
-	    var stepItem /** @type {MaterialStepper.Steps_.collection<stepItem>} */;
+	    /** @type {boolean} */
+	    var moved;
+	    /** @type {MaterialStepper.Steps_.collection<step>} */
+	    var step;
+	    /** @type {number} */
+	    var activate;
+	    /** @type {string} */
+	    var model;
+	    /** @type {string} */
+	    var item;
+	    /** @type {MaterialStepper.Steps_.collection<stepItem>} */
+	    var stepItem;
 	    moved = false;
 
 	    for (model in this.Steps_.collection) {
-	      step = this.Steps_.collection[model];
+	      // Rule eslint guard-for-in.
+	      if (this.Steps_.collection.hasOwnProperty(model)) {
+	        step = this.Steps_.collection[model];
 
-	      if (step.isActive) {
-	        activate = step.id + 1;
+	        if (step.isActive) {
+	          activate = step.id + 1;
 
-	        if (this.Stepper_.hasFeedback) {
-	          // Remove the (feedback) transient effect before move
-	          this.removeTransientEffect_(step);
-	        }
-
-	        if (step.state === this.StepState_.ERROR) {
-
-	          // Case the current state of step is "error", update the error message
-	          // to the original title message or just remove it.
-	          if (step.label_title_message_text) {
-	            this.updateTitleMessage_(step, step.label_title_message_text);
-	          } else {
-	            this.removeTitleMessage_(step);
+	          if (this.Stepper_.hasFeedback) {
+	            // Remove the (feedback) transient effect before move
+	            this.removeTransientEffect_(step);
 	          }
-	        }
 
-	        if (step.isEditable && this.Stepper_.isLinear) {
-
-	          // In linear steppers if the current step is editable the stepper needs to find
-	          // the next step without "completed" state
-	          for (item in this.Steps_.collection) {
-	            stepItem = this.Steps_.collection[item];
-
-	            if (stepItem.id > step.id && stepItem.state !== this.StepState_.COMPLETED) {
-	              activate = stepItem.id;
-	              break;
+	          if (step.state === this.StepState_.ERROR) {
+	            // Case the current state of step is "error", update the error message
+	            // to the original title message or just remove it.
+	            if (step.labelTitleMessageText) {
+	              this.updateTitleMessage_(step, step.labelTitleMessageText);
+	            } else {
+	              this.removeTitleMessage_(step);
 	            }
 	          }
-	        }
-	        moved = this.setActive_(activate);
 
-	        // Update "manually" the state of current step to "completed" because
-	        // MaterialStepper.setActive_(<number>) can't change the state of non-linears steppers
-	        // and can't change the state of optional or last step in linears steppers.
-	        if (this.Stepper_.isLinear) {
+	          if (step.isEditable && this.Stepper_.isLinear) {
+	            // In linear steppers if the current step is editable the stepper needs to find
+	            // the next step without "completed" state
+	            for (item in this.Steps_.collection) {
+	              // Rule eslint guard-for-in.
+	              if (this.Steps_.collection.hasOwnProperty(item)) {
+	                stepItem = this.Steps_.collection[item];
 
-	          if (step.isOptional || step.id === this.Steps_.total) {
+	                if (stepItem.id > step.id && stepItem.state !== this.StepState_.COMPLETED) {
+	                  activate = stepItem.id;
+	                  break;
+	                }
+	              }
+	            }
+	          }
+	          moved = this.setActive_(activate);
+
+	          // Update "manually" the state of current step to "completed" because
+	          // MaterialStepper.setActive_(<number>) can't change the state of non-linears steppers
+	          // and can't change the state of optional or last step in linears steppers.
+	          if (this.Stepper_.isLinear) {
+	            if (step.isOptional || step.id === this.Steps_.total) {
+	              this.updateStepState_(step, this.StepState_.COMPLETED);
+	            }
+	          } else {
 	            this.updateStepState_(step, this.StepState_.COMPLETED);
 	          }
-	        } else {
-	          this.updateStepState_(step, this.StepState_.COMPLETED);
-	        }
 
-	        // Now dispatch on step the custom event "onstepcomplete"
-	        this.dispatchEventOnStepComplete_(step);
-	        break;
+	          // Now dispatch on step the custom event "onstepcomplete"
+	          this.dispatchEventOnStepComplete_(step);
+	          break;
+	        }
 	      }
 	    }
-
 	    return moved;
 	  };
 
 	  /**
-	   * Update the title message or creates a new if it not exists. 
-	   * 
+	   * Update the title message or creates a new if it not exists.
 	   * @param {MaterialStepper.Steps_.collection<step>} step The step of label to be updated.
 	   * @param {string} text The text content to update.
-	   * @returns {undefined}
+	   * @return {undefined}
 	   */
 	  MaterialStepper.prototype.updateTitleMessage_ = function (step, text) {
-	    var titleMessage /** @type {HTMLElement | null} */;
+	    /** @type {HTMLElement | null} */
+	    var titleMessage;
 	    titleMessage = step.container.querySelector('.' + this.CssClasses_.STEP_TITLE_MESSAGE);
 
 	    if (!titleMessage) {
 	      titleMessage = document.createElement('span');
 	      titleMessage.classList.add(this.CssClasses_.STEP_TITLE_MESSAGE);
-	      step.label_title.appendChild(titleMessage);
+	      step.labelTitle.appendChild(titleMessage);
 	    }
 	    titleMessage.textContent = text;
 	  };
 
 	  /**
-	   * Remove the title message if it exists. 
-	   * 
+	   * Remove the title message if it exists.
 	   * @param {MaterialStepper.Steps_.collection<step>} step The step to remove title message.
-	   * @returns {undefined}
+	   * @return {undefined}
 	   */
 	  MaterialStepper.prototype.removeTitleMessage_ = function (step) {
-	    var titleMessage /** @type {HTMLElement | null} */;
+	    /** @type {HTMLElement | null} */
+	    var titleMessage;
 	    titleMessage = step.container.querySelector('.' + this.CssClasses_.STEP_TITLE_MESSAGE);
 
 	    if (titleMessage) {
@@ -804,34 +844,36 @@
 	  };
 
 	  /**
-	   * Remove (feedback) transient effect and applied to the step. 
-	   * 
+	   * Remove (feedback) transient effect and applied to the step.
 	   * @param {MaterialStepper.Steps_.collection<step>} step The step to remove effect.
-	   * @returns {boolean}
+	   * @return {boolean}
 	   */
 	  MaterialStepper.prototype.removeTransientEffect_ = function (step) {
-	    var transient /** @type {HTMLElement | null} */;
+	    /** @type {HTMLElement | null} */
+	    var transient;
 	    transient = step.content.querySelector('.' + this.CssClasses_.TRANSIENT);
 
 	    if (!transient) return false;
 
 	    step.container.classList.remove(this.CssClasses_.STEP_TRANSIENT);
 	    step.content.removeChild(transient);
-
 	    return true;
 	  };
 
 	  /**
-	   * Create (feedback) transient effect and apply to the current step. 
-	   * 
+	   * Create (feedback) transient effect and apply to the current step.
 	   * @param {MaterialStepper.Steps_.collection<step>} step The step to add effect.
-	   * @returns {boolean}
+	   * @return {boolean}
 	   */
 	  MaterialStepper.prototype.addTransientEffect_ = function (step) {
-	    var transient /** @type {HTMLElement} */;
-	    var overlay /** @type {HTMLElement} */;
-	    var loader /** @type {HTMLElement} */;
-	    var spinner /** @type {HTMLElement} */;
+	    /** @type {HTMLElement} */
+	    var transient;
+	    /** @type {HTMLElement} */
+	    var overlay;
+	    /** @type {HTMLElement} */
+	    var loader;
+	    /** @type {HTMLElement} */
+	    var spinner;
 
 	    if (step.content.querySelector('.' + this.CssClasses_.TRANSIENT)) return false;
 
@@ -852,25 +894,24 @@
 	    step.content.appendChild(transient);
 	    // Assume componentHandler is available in the global scope.
 	    componentHandler.upgradeDom();
-
 	    return true;
 	  };
 
 	  /**
-	   * Add event listener to linear, non-linear steppers and dispatch the custom events. 
-	   * 
-	   * @returns {undefined}
+	   * Add event listener to linear, non-linear steppers and dispatch the custom events.
+	   * @return {undefined}
 	   */
 	  MaterialStepper.prototype.setCustomEvents_ = function () {
-	    var linearLabels /** @type {function} */;
-	    var nonLinearLabels /** @type {function} */;
-	    var dispatchCustomEvents /** @type {function} */;
+	    /** @type {function} */
+	    var linearLabels;
+	    /** @type {function} */
+	    var nonLinearLabels;
+	    /** @type {function} */
+	    var dispatchCustomEvents;
 
 	    linearLabels = function linearLabels(step) {
-
 	      // We know that editable steps can be activated by click on label case it's completed
 	      if (step.isEditable) {
-
 	        step.label.addEventListener('click', function (event) {
 	          event.preventDefault();
 
@@ -881,7 +922,6 @@
 	      }
 	    };
 	    nonLinearLabels = function nonLinearLabels(step) {
-
 	      step.label.addEventListener('click', function (event) {
 	        event.preventDefault();
 	        this.setStepActive_(step);
@@ -903,51 +943,45 @@
 	  };
 
 	  /**
-	   * Dispatch "onstepcomplete" event on step when method stepper.next() is invoked to the 
-	   * current and return true. Or just when the active step change your state to "completed". 
-	   * 
+	   * Dispatch "onstepcomplete" event on step when method stepper.next() is invoked to the
+	   * current and return true. Or just when the active step change your state to "completed".
 	   * @param {MaterialStepper.Steps_.collection<step>} step The step to dispatch event.
-	   * @returns {undefined}
+	   * @return {undefined}
 	   */
 	  MaterialStepper.prototype.dispatchEventOnStepComplete_ = function (step) {
 	    step.container.dispatchEvent(this.CustomEvents_.onstepcomplete);
 	  };
 
 	  /**
-	   * Dispatch "onsteperror" event on step when method stepper.error('Your alert message') 
-	   * is invoked to the current step and return true. Or just when the active step 
-	   * change your state to "error". 
-	   * 
+	   * Dispatch "onsteperror" event on step when method stepper.error('Your alert message')
+	   * is invoked to the current step and return true. Or just when the active step
+	   * change your state to "error".
 	   * @param {MaterialStepper.Steps_.collection<step>} step The step to dispatch event.
-	   * @returns {undefined}
+	   * @return {undefined}
 	   */
 	  MaterialStepper.prototype.dispatchEventOnStepError_ = function (step) {
 	    step.container.dispatchEvent(this.CustomEvents_.onsteperror);
 	  };
 
 	  /**
-	   * Dispatch "onsteppercomplete" event on stepper when all steps are completed. 
+	   * Dispatch "onsteppercomplete" event on stepper when all steps are completed.
 	   * If there is optionals steps, they will be ignored.
-	   *
-	   * @returns {undefined} 
+	   * @return {undefined}
 	   */
 	  MaterialStepper.prototype.dispatchEventOnStepperComplete_ = function () {
 	    this.element_.dispatchEvent(this.CustomEvents_.onsteppercomplete);
 	  };
 
 	  /**
-	   * Dispatch "onstepnext" event on step when the step action button/link with 
-	   * [data-stepper-next] attribute is clicked. 
-	   * 
+	   * Dispatch "onstepnext" event on step when the step action button/link with
+	   * [data-stepper-next] attribute is clicked.
 	   * @param {MaterialStepper.Steps_.collection<step>} step The step to dispatch event.
-	   * @returns {boolean}
+	   * @return {boolean}
 	   */
 	  MaterialStepper.prototype.dispatchEventOnStepNext_ = function (step) {
+	    if (!step.actionsNext) return false;
 
-	    if (!step.actions_next) return false;
-
-	    step.actions_next.addEventListener('click', function () {
-
+	    step.actionsNext.addEventListener('click', function () {
 	      if (this.Stepper_.hasFeedback) {
 	        this.addTransientEffect_(step);
 	      }
@@ -958,17 +992,15 @@
 	  };
 
 	  /**
-	   * Dispatch "onstepcancel" event on step when the step action button/link with 
-	   * [data-stepper-cancel] attribute is clicked. 
-	   * 
+	   * Dispatch "onstepcancel" event on step when the step action button/link with
+	   * [data-stepper-cancel] attribute is clicked.
 	   * @param {MaterialStepper.Steps_.collection<step>} step The step to dispatch event.
-	   * @returns {boolean}
+	   * @return {boolean}
 	   */
 	  MaterialStepper.prototype.dispatchEventOnStepCancel_ = function (step) {
+	    if (!step.actionsCancel) return false;
 
-	    if (!step.actions_cancel) return false;
-
-	    step.actions_cancel.addEventListener('click', function (event) {
+	    step.actionsCancel.addEventListener('click', function (event) {
 	      event.preventDefault();
 	      step.container.dispatchEvent(this.CustomEvents_.onstepcancel);
 	    }.bind(this));
@@ -977,69 +1009,66 @@
 	  };
 
 	  /**
-	   * Dispatch "onstepskip" event on step when the step action button/link with 
-	   * [data-stepper-skip] attribute is clicked. 
-	   * 
+	   * Dispatch "onstepskip" event on step when the step action button/link with
+	   * [data-stepper-skip] attribute is clicked.
 	   * @param {MaterialStepper.Steps_.collection<step>} step The step to dispatch event.
-	   * @returns {boolean}
+	   * @return {boolean}
 	   */
 	  MaterialStepper.prototype.dispatchEventOnStepSkip_ = function (step) {
+	    if (!step.actionsSkip) return false;
 
-	    if (!step.actions_skip) return false;
-
-	    step.actions_skip.addEventListener('click', function (event) {
+	    step.actionsSkip.addEventListener('click', function (event) {
 	      event.preventDefault();
 	      step.container.dispatchEvent(this.CustomEvents_.onstepskip);
 	    }.bind(this));
-
 	    return true;
 	  };
 
 	  /**
-	   * Dispatch "onstepback" event on step when the step action button/link with 
-	   * [data-stepper-back] attribute is clicked. 
-	   * 
+	   * Dispatch "onstepback" event on step when the step action button/link with
+	   * [data-stepper-back] attribute is clicked.
 	   * @param {MaterialStepper.Steps_.collection<step>} step The step to dispatch event.
-	   * @returns {boolean}
+	   * @return {boolean}
 	   */
 	  MaterialStepper.prototype.dispatchEventOnStepBack_ = function (step) {
+	    if (!step.actionsBack) return false;
 
-	    if (!step.actions_back) return false;
-
-	    step.actions_back.addEventListener('click', function (event) {
+	    step.actionsBack.addEventListener('click', function (event) {
 	      event.preventDefault();
 	      step.container.dispatchEvent(this.CustomEvents_.onstepback);
 	    }.bind(this));
-
 	    return true;
 	  };
 
 	  /**
-	   * Check if has some active transient effect on steps
-	   *
-	   * @returns {boolean} 
+	   * Check if has some active transient effect on steps.
+	   * @return {boolean}
 	   */
 	  MaterialStepper.prototype.hasTransient = function () {
-	    var cssClasseStep /** @type {string} */;
-	    var cssClasseStepContent /** @type {string} */;
-	    var cssClasseTransient /** @type {string} */;
-	    var transient /** @type {HTMLElement | null} */;
+	    /** @type {string} */
+	    var cssClasseStep;
+	    /** @type {string} */
+	    var cssClasseStepContent;
+	    /** @type {string} */
+	    var cssClasseTransient;
+	    /** @type {string} */
+	    var selectorTransient;
+	    /** @type {HTMLElement | null} */
+	    var transient;
 	    cssClasseStep = '.' + this.CssClasses_.STEP;
 	    cssClasseStepContent = '.' + this.CssClasses_.STEP_CONTENT;
 	    cssClasseTransient = '.' + this.CssClasses_.TRANSIENT;
-	    transient = this.element_.querySelector(cssClasseStep + ' > ' + cssClasseStepContent + ' > ' + cssClasseTransient);
-
-	    return transient ? true : false;
+	    selectorTransient = cssClasseStep + ' > ' + cssClasseStepContent + ' > ' + cssClasseTransient;
+	    transient = this.element_.querySelector(selectorTransient);
+	    return transient !== null;
 	  };
 
 	  /**
 	   * Initialize the instance.
-	   * 
-	   * @returns {undefined}
+	   * @return {undefined}
 	   * @public
 	   */
 	  MaterialStepper.prototype.init = function () {
-
 	    // Check if stepper element exists.
 	    if (this.element_) {
 	      this.Stepper_ = this.getStepper_();
