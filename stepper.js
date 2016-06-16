@@ -54,6 +54,7 @@
 	 * @link https://github.com/ahlechandre/mdl-stepper
 	 */
 	// Issue: https://github.com/ahlechandre/mdl-stepper/issues/14
+	// This solution is a reference to the MDN polyfill.
 	(function () {
 	  if (typeof window.CustomEvent === 'function') return;
 
