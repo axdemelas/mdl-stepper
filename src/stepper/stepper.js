@@ -1,7 +1,7 @@
 /**
  * MDL Stepper - A library that implements to the Material Design Lite (MDL) a polyfill for stepper
  * component specified by Material Design.
- * @version v1.1.3
+ * @version v1.1.4
  * @author Alexandre Thebaldi <ahlechandre@gmail.com>.
  * @link https://github.com/ahlechandre/mdl-stepper
  */
