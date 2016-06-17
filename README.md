@@ -217,16 +217,19 @@ if (typeof window.componentHandler !== 'undefined') {
 
 ### Dynamically adding a Stepper
 
-If you need to include a Stepper after initial page load by an asynchronous request for example, you will have to manually upgrades the component:
+If you need to include a Stepper after initial page load (by an asynchronous request for example), you will have to manually upgrades the component.
 
 ```js
 // Gets your stepper element added after initial page load.
 var stepperElement = document.querySelector('.mdl-stepper');
+
 // The component instance is not upgraded and so not defined.
 console.log(typeof stepperElement.MaterialStepper); // undefined
+
 // Upgrades all registered components found in the current DOM. 
 // This is automatically called on window load.
 componentHandler.upgradeAllRegistered();
+
 // At this point, component handler already upgraded
 // the Stepper component and assigned the instance for 
 // control over API.
@@ -238,6 +241,7 @@ Instead of upgrade all registered (recommended) you can upgrade only the Stepper
 ```js
 // Gets your stepper element added after initial page load.
 var stepperElement = document.querySelector('.mdl-stepper');
+
 // Upgrades a specific element rather than all in the DOM.
 componentHandler.upgradeElement(stepperElement);
 ```
