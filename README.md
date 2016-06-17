@@ -203,14 +203,14 @@ componentHandler.upgradeAllRegistered();
 console.log(typeof stepperElement.MaterialStepper); // object
 ```
 
-> Instead of upgrade all registered (recommended) you can upgrade only the Stepper element using:
+Instead of upgrade all registered (recommended) you can upgrade only the Stepper element using:
 
-> ```html
+```html
 // Gets your stepper element added after initial page load.
 var stepperElement = document.querySelector('.mdl-stepper');
 // Upgrades a specific element rather than all in the DOM.
 componentHandler.upgradeElement(stepperElement);
-> ```
+```
 
 #Development
 
