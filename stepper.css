@@ -293,7 +293,7 @@
 /* STEP TRANSIENT */
 .mdl-step__transient {
   position: absolute;
-  top: 68px;
+  top: 72px;
   left: 64px;
   z-index: 2;
   -webkit-display: flex;

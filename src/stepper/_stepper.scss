@@ -310,7 +310,7 @@
 
 .mdl-step__transient {
   position: absolute;
-  top: 68px;
+  top: #{($stepper-padding * 6)};
   left: $step-content-margin-left;
   z-index: 2;
   @include DisplayFlex();
