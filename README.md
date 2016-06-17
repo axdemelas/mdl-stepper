@@ -254,13 +254,13 @@ sass mdl-stepper.scss:../stepper.min.css --style compressed
 
 # Why MDL Stepper
 
-> As discussed at [#1748](https://github.com/google/material-design-lite/issues/1748) issue, the stepper is a component that is present in the Material Design specification and MDL has not support yet.
+As discussed at [#1748](https://github.com/google/material-design-lite/issues/1748) issue, the stepper is a component that is present in the Material Design specification and MDL has not support yet.
 
-> While the Material Design Lite team works in other parts of the library, i decided to create my own component.
+While the Material Design Lite team works in other parts of the library, i decided to create my own component.
 
-> Obviously, this is my interpretation of the spec and it does not reflect what the Material Design team would consider ‘correct’ but i tried to preserve as much of specified details.
+Obviously, this is my interpretation of the spec and it does not reflect what the Material Design team would consider ‘correct’ but i tried to preserve as much of specified details.
 
-> You can consider this as a polyfill to be used while the MDL do not include that. Maybe it can be useful and help other people to build their web apps.
+You can consider this as a polyfill to be used while the MDL do not include that. Maybe it can be useful and help other people to build their web apps.
 
 # License 
 
