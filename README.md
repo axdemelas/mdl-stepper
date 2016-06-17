@@ -28,7 +28,7 @@ git clone git@github.com:ahlechandre/mdl-stepper.git
 cd mdl-stepper
 ```
 
-Goes to [development](#Development) section for details.
+Goes to [development](#development) section for details.
 
 ### NPM
 
