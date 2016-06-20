@@ -6,9 +6,9 @@
   <title>Document</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.indigo-pink.min.css">
-  <link rel="stylesheet" href="../../../stepper.css">
+  <link rel="stylesheet" href="../../../../stepper.css">
   <script src="https://code.getmdl.io/1.1.3/material.min.js"></script>
-  <script src="../../../stepper.js"></script>
+  <script src="../../../../stepper.js"></script>
   <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
   <style>
     body {
@@ -34,12 +34,12 @@
     <div class="mdl-grid">
       <div class="mdl-cell mdl-cell--12-col">
         <!-- markup -->
-        <ul class="mdl-stepper mdl-stepper--feedback" id="demo-stepper-feedback">
-          <li class="mdl-step">
+        <ul class="mdl-stepper mdl-stepper--linear" id="demo-editable-steps">
+          <li class="mdl-step mdl-step--editable">
             <span class="mdl-step__label">
               <span class="mdl-step__title">
                 <span class="mdl-step__title-text">Title of step 1</span>
-                <span class="mdl-step__title-message">Summarize if needed</span>
+                <span class="mdl-step__title-message">You can edit this step after</span>
               </span>
             </span>
             <div class="mdl-step__content"></div>
@@ -93,40 +93,36 @@
   <!-- script -->
   <script>
     (function () {
-      // Stepper feedback demonstration 
-      var demoFeedback = function (e) {
-        var element = document.querySelector('.mdl-stepper#demo-stepper-feedback');
-
+      // Editable steps demonstration 
+      var demoEditableSteps = function (e) {
+        var element = document.querySelector('.mdl-stepper#demo-editable-steps');
+    
         if (!element) return;
-
+    
         var stepper = element.MaterialStepper;
         var steps = element.querySelectorAll('.mdl-step');
         var step;
-
+    
         for (var i = 0; i < steps.length; i++) {
           step = steps[i];
           step.addEventListener('onstepnext', function (e) {
-            // Just showing the transient effect for 3s     
-            setTimeout(function () {
-              // Nice now goes forward     
-              stepper.next();
-            }, 3000);
+            stepper.next();
           });
         }
         element.addEventListener('onsteppercomplete', function (e) {
           var toast = document.querySelector('#snackbar-stepper-complete');
-        
-          if (!toast) return false;
-        
+    
+          if (!toast) return;
+    
           toast.MaterialSnackbar.showSnackbar({
-            message: 'Stepper with feedback are completed',
+            message: 'Stepper with editable step are completed',
             timeout: 4000,
             actionText: 'Ok'
           });
         });
       };
-      
-      window.addEventListener('load', demoFeedback);
+
+      window.addEventListener('load', demoEditableSteps);
     })();
   </script>
 </body>

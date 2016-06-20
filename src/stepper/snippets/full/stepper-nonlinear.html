@@ -6,9 +6,9 @@
   <title>Document</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.indigo-pink.min.css">
-  <link rel="stylesheet" href="../../../stepper.css">
+  <link rel="stylesheet" href="../../../../stepper.css">
   <script src="https://code.getmdl.io/1.1.3/material.min.js"></script>
-  <script src="../../../stepper.js"></script>
+  <script src="../../../../stepper.js"></script>
   <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
   <style>
     body {
@@ -17,11 +17,6 @@
     
     .mdl-stepper-demo .mdl-stepper {
       margin: auto;
-    }
-
-    /* Dynamic vertical step height */
-    .mdl-step {
-      height: 800px;
     }
   </style>
 </head>
@@ -39,54 +34,54 @@
     <div class="mdl-grid">
       <div class="mdl-cell mdl-cell--12-col">
         <!-- markup -->
-        <ul class="mdl-stepper mdl-stepper--linear" id="demo-stepper-linear">
+        <ul class="mdl-stepper" id="demo-stepper-non-linear">
           <li class="mdl-step">
             <span class="mdl-step__label">
               <span class="mdl-step__title">
                 <span class="mdl-step__title-text">Title of step 1</span>
-                <span class="mdl-step__title-message">Summarize if needed</span>
-              </span>
+            <span class="mdl-step__title-message">Summarize if needed</span>
+            </span>
             </span>
             <div class="mdl-step__content"></div>
             <div class="mdl-step__actions">
               <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored mdl-button--raised" data-stepper-next>
-            Continue
-          </button>
+                Continue
+              </button>
               <button class="mdl-button mdl-js-button mdl-js-ripple-effect" data-stepper-cancel>
-            Cancel
-          </button>
+                Cancel
+              </button>
             </div>
           </li>
           <li class="mdl-step">
             <span class="mdl-step__label">
-          <span class="mdl-step__title">
-            <span class="mdl-step__title-text">Title of step 2</span>
+              <span class="mdl-step__title">
+                <span class="mdl-step__title-text">Title of step 2</span>
             </span>
             </span>
             <div class="mdl-step__content"></div>
             <div class="mdl-step__actions">
               <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored mdl-button--raised" data-stepper-next>
-            Continue
-          </button>
+                Continue
+              </button>
               <button class="mdl-button mdl-js-button mdl-js-ripple-effect" data-stepper-cancel>
-            Cancel
-          </button>
+                Cancel
+              </button>
             </div>
           </li>
           <li class="mdl-step">
             <span class="mdl-step__label">
-          <span class="mdl-step__title">
-            <span class="mdl-step__title-text">Title of step 3</span>
+              <span class="mdl-step__title">
+                <span class="mdl-step__title-text">Title of step 3</span>
             </span>
             </span>
             <div class="mdl-step__content"></div>
             <div class="mdl-step__actions">
               <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored mdl-button--raised" data-stepper-next>
-            Continue
-          </button>
+                Continue
+              </button>
               <button class="mdl-button mdl-js-button mdl-js-ripple-effect" data-stepper-cancel>
-            Cancel
-          </button>
+                Cancel
+              </button>
             </div>
           </li>
         </ul>
@@ -94,46 +89,40 @@
     </div>
 
   </section>
-  <!-- scrip -->
+
+  <!-- script -->
   <script>
     (function () {
-      // Stepper linear demonstration 
-      var demoLinear = function (e) {
-        // Select stepper container element      
-        var element = document.querySelector('.mdl-stepper#demo-stepper-linear');
-        
+      // Stepper non-linear demonstration 
+      var demoNonLinear = function (e) {
+        var element = document.querySelector('.mdl-stepper#demo-stepper-non-linear');
+      
         if (!element) return;
-        
-        // Get the MaterialStepper instance of element to control it          
+      
         var stepper = element.MaterialStepper;
         var steps = element.querySelectorAll('.mdl-step');
         var step;
-
-        // Just looping and adding listener to event onstepnext to the all steps          
+      
         for (var i = 0; i < steps.length; i++) {
           step = steps[i];
-          // When user clicks on [data-stepper-next] button of step          
           step.addEventListener('onstepnext', function (e) {
-            // {element}.MaterialStepper.next() change the state of current step to "completed" 
-            // and move one step forward        
             stepper.next();
           });
         }
-        // When all steps are completed this event is dispatched          
         element.addEventListener('onsteppercomplete', function (e) {
           var toast = document.querySelector('#snackbar-stepper-complete');
-
-          if (!toast) return;
-
+      
+          if (!toast) return false;
+      
           toast.MaterialSnackbar.showSnackbar({
-            message: 'Stepper linear are completed',
+            message: 'Stepper non-linear are completed',
             timeout: 4000,
             actionText: 'Ok'
           });
         });
       };
-      
-      window.addEventListener('load', demoLinear);
+
+      window.addEventListener('load', demoNonLinear);
     })();
   </script>
 </body>
