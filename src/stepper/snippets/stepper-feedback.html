@@ -94,7 +94,7 @@
     for (var i = 0; i < steps.length; i++) {
       
       // When user clicks on [data-stepper-next] button of step.          
-      steps[i].addEventListener('onstepnext', (function (e, step) {
+      steps[i].addEventListener('onstepnext', (function (step) {
 
         return function () {
           // {element}.MaterialStepper.next() change the state of current step to "completed" 
@@ -109,7 +109,7 @@
             Stepper.next();              
           }, 3000);
         };
-      })(event, steps[i]));
+      })(steps[i]));
     }
 
     // When all steps are completed this event is dispatched.          
