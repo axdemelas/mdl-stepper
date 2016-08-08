@@ -53,32 +53,6 @@
 	 * @author Alexandre Thebaldi <ahlechandre@gmail.com>.
 	 * @link https://github.com/ahlechandre/mdl-stepper
 	 */
-	// Issue: https://github.com/ahlechandre/mdl-stepper/issues/14
-	// This solution is a reference to the MDN polyfill.
-	(function () {
-	  if (typeof window.CustomEvent === 'function') return;
-
-	  /**
-	   * Polyfill for CustomEvent in Internet Explorer 9 and higher.
-	   * @param {string} event The event name.
-	   * @param {Object} params Options of event.
-	   * @return {Object}
-	   */
-	  function CustomEvent(event, params) {
-	    /** @type {Object} */
-	    var _event;
-	    params = params || {
-	      bubbles: false,
-	      cancelable: false,
-	      detail: undefined
-	    };
-	    _event = document.createEvent('CustomEvent');
-	    _event.initCustomEvent(event, params.bubbles, params.cancelable, params.detail);
-	    return _event;
-	  }
-	  CustomEvent.prototype = window.Event.prototype;
-	  window.CustomEvent = CustomEvent;
-	})();
 
 	(function () {
 	  'use strict';
@@ -143,41 +117,37 @@
 	    SKIP: 'stepper-skip',
 	    BACK: 'stepper-back'
 	  };
-
+        
+	    // Issue: https://github.com/ahlechandre/mdl-stepper/issues/14
+        // Provide Internal CustomEvent Helper Function
+	  MaterialStepper.prototype.DefineCustomEvent = function (ev, bubble, cancel) {
+	      var ev;
+	      if ('CustomEvent' in window && typeof window.CustomEvent === 'function') {
+	          ev = new Event(ev, {
+	              'bubbles': bubble, 'cancelable': cancel
+	          });
+	      } else {
+	          ev = document.createEvent('Events');
+	          ev.initEvent(ev, bubble, cancel);
+	      }
+	      return ev;
+	  };
+        
 	  /**
 	   * Store the custom events applieds to the steps and stepper.
 	   *
 	   * @private
 	   */
+	    // Issue: https://github.com/ahlechandre/mdl-stepper/issues/14
+        // Reference Helper Function to define CustomEvents
 	  MaterialStepper.prototype.CustomEvents_ = {
-	    onstepnext: new CustomEvent('onstepnext', {
-	      bubbles: true,
-	      cancelable: true
-	    }),
-	    onstepcancel: new CustomEvent('onstepcancel', {
-	      bubbles: true,
-	      cancelable: true
-	    }),
-	    onstepskip: new CustomEvent('onstepskip', {
-	      bubbles: true,
-	      cancelable: true
-	    }),
-	    onstepback: new CustomEvent('onstepback', {
-	      bubbles: true,
-	      cancelable: true
-	    }),
-	    onstepcomplete: new CustomEvent('onstepcomplete', {
-	      bubbles: true,
-	      cancelable: true
-	    }),
-	    onsteperror: new CustomEvent('onsteperror', {
-	      bubbles: true,
-	      cancelable: true
-	    }),
-	    onsteppercomplete: new CustomEvent('onsteppercomplete', {
-	      bubbles: true,
-	      cancelable: true
-	    })
+	      onstepnext: MaterialStepper.prototype.DefineCustomEvent('onstepnext', true, true),
+	      onstepcancel: MaterialStepper.prototype.DefineCustomEvent('onstepcancel', true, true),
+	      onstepskip: MaterialStepper.prototype.DefineCustomEvent('onstepskip', true, true),
+	      onstepback: MaterialStepper.prototype.DefineCustomEvent('onstepback', true, true),
+	      onstepcomplete: MaterialStepper.prototype.DefineCustomEvent('onstepcomplete', true, true),
+	      onsteperror: MaterialStepper.prototype.DefineCustomEvent('onsteperror', true, true),
+	      onsteppercomplete: MaterialStepper.prototype.DefineCustomEvent('onsteppercomplete', true, true)
 	  };
 
 	  /**
