@@ -1,7 +1,7 @@
 /**
  * MDL Stepper - A library that implements to the Material Design Lite (MDL) a polyfill for stepper
  * component specified by Material Design.
- * @version v1.1.5
+ * @version v1.1.6
  * @author Alexandre Thebaldi <ahlechandre@gmail.com>.
  * @link https://github.com/ahlechandre/mdl-stepper
  */
@@ -69,25 +69,26 @@
     BACK: 'stepper-back'
   };
 
-
   /**
    * Issue: https://github.com/ahlechandre/mdl-stepper/issues/14
    * Returns a custom event object
-   * @param {string} name/type of custom event to create.
-   * @param {bool} event bubbleable
-   * @param {bool} event cancelable
+   * @param {string} evtName The name/type of custom event to create.
+   * @param {bool} bubble If event is bubbleable.
+   * @param {bool} cancel If event is cancelable.
+   * @returns {Event}
    */
-  MaterialStepper.prototype.DefineCustomEvent = function (evtName, bubble, cancel) {
-      var ev;
-      if ('CustomEvent' in window && typeof window.CustomEvent === 'function') {
-          ev = new Event(evtName, {
-              'bubbles': bubble, 'cancelable': cancel
-          });
-      } else {
-          ev = document.createEvent('Events');
-          ev.initEvent(evtName, bubble, cancel);
-      }
-      return ev;
+  MaterialStepper.prototype.defineCustomEvent = function (evtName, bubble, cancel) {
+    var ev;
+    if ('CustomEvent' in window && typeof window.CustomEvent === 'function') {
+      ev = new Event(evtName, {
+        bubbles: bubble,
+        cancelable: cancel
+      });
+    } else {
+      ev = document.createEvent('Events');
+      ev.initEvent(evtName, bubble, cancel);
+    }
+    return ev;
   };
 
   /**
@@ -96,13 +97,13 @@
    * @private
    */
   MaterialStepper.prototype.CustomEvents_ = {
-      onstepnext: MaterialStepper.prototype.DefineCustomEvent('onstepnext', true, true),
-      onstepcancel: MaterialStepper.prototype.DefineCustomEvent('onstepcancel', true, true),
-      onstepskip: MaterialStepper.prototype.DefineCustomEvent('onstepskip', true, true),
-      onstepback: MaterialStepper.prototype.DefineCustomEvent('onstepback', true, true),
-      onstepcomplete: MaterialStepper.prototype.DefineCustomEvent('onstepcomplete', true, true),
-      onsteperror: MaterialStepper.prototype.DefineCustomEvent('onsteperror', true, true),
-      onsteppercomplete: MaterialStepper.prototype.DefineCustomEvent('onsteppercomplete', true, true)
+    onstepnext: MaterialStepper.prototype.defineCustomEvent('onstepnext', true, true),
+    onstepcancel: MaterialStepper.prototype.defineCustomEvent('onstepcancel', true, true),
+    onstepskip: MaterialStepper.prototype.defineCustomEvent('onstepskip', true, true),
+    onstepback: MaterialStepper.prototype.defineCustomEvent('onstepback', true, true),
+    onstepcomplete: MaterialStepper.prototype.defineCustomEvent('onstepcomplete', true, true),
+    onsteperror: MaterialStepper.prototype.defineCustomEvent('onsteperror', true, true),
+    onsteppercomplete: MaterialStepper.prototype.defineCustomEvent('onsteppercomplete', true, true)
   };
 
   /**
