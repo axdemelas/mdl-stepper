@@ -49,36 +49,10 @@
 	/**
 	 * MDL Stepper - A library that implements to the Material Design Lite (MDL) a polyfill for stepper
 	 * component specified by Material Design.
-	 * @version v1.1.5
+	 * @version v1.1.6
 	 * @author Alexandre Thebaldi <ahlechandre@gmail.com>.
 	 * @link https://github.com/ahlechandre/mdl-stepper
 	 */
-	// Issue: https://github.com/ahlechandre/mdl-stepper/issues/14
-	// This solution is a reference to the MDN polyfill.
-	(function () {
-	  if (typeof window.CustomEvent === 'function') return;
-
-	  /**
-	   * Polyfill for CustomEvent in Internet Explorer 9 and higher.
-	   * @param {string} event The event name.
-	   * @param {Object} params Options of event.
-	   * @return {Object}
-	   */
-	  function CustomEvent(event, params) {
-	    /** @type {Object} */
-	    var _event;
-	    params = params || {
-	      bubbles: false,
-	      cancelable: false,
-	      detail: undefined
-	    };
-	    _event = document.createEvent('CustomEvent');
-	    _event.initCustomEvent(event, params.bubbles, params.cancelable, params.detail);
-	    return _event;
-	  }
-	  CustomEvent.prototype = window.Event.prototype;
-	  window.CustomEvent = CustomEvent;
-	})();
 
 	(function () {
 	  'use strict';
@@ -145,39 +119,40 @@
 	  };
 
 	  /**
+	   * Issue: https://github.com/ahlechandre/mdl-stepper/issues/14
+	   * Returns a custom event object
+	   * @param {string} evtName The name/type of custom event to create.
+	   * @param {bool} bubble If event is bubbleable.
+	   * @param {bool} cancel If event is cancelable.
+	   * @returns {Event}
+	   */
+	  MaterialStepper.prototype.defineCustomEvent = function (evtName, bubble, cancel) {
+	    var ev;
+	    if ('CustomEvent' in window && typeof window.CustomEvent === 'function') {
+	      ev = new Event(evtName, {
+	        bubbles: bubble,
+	        cancelable: cancel
+	      });
+	    } else {
+	      ev = document.createEvent('Events');
+	      ev.initEvent(evtName, bubble, cancel);
+	    }
+	    return ev;
+	  };
+
+	  /**
 	   * Store the custom events applieds to the steps and stepper.
 	   *
 	   * @private
 	   */
 	  MaterialStepper.prototype.CustomEvents_ = {
-	    onstepnext: new CustomEvent('onstepnext', {
-	      bubbles: true,
-	      cancelable: true
-	    }),
-	    onstepcancel: new CustomEvent('onstepcancel', {
-	      bubbles: true,
-	      cancelable: true
-	    }),
-	    onstepskip: new CustomEvent('onstepskip', {
-	      bubbles: true,
-	      cancelable: true
-	    }),
-	    onstepback: new CustomEvent('onstepback', {
-	      bubbles: true,
-	      cancelable: true
-	    }),
-	    onstepcomplete: new CustomEvent('onstepcomplete', {
-	      bubbles: true,
-	      cancelable: true
-	    }),
-	    onsteperror: new CustomEvent('onsteperror', {
-	      bubbles: true,
-	      cancelable: true
-	    }),
-	    onsteppercomplete: new CustomEvent('onsteppercomplete', {
-	      bubbles: true,
-	      cancelable: true
-	    })
+	    onstepnext: MaterialStepper.prototype.defineCustomEvent('onstepnext', true, true),
+	    onstepcancel: MaterialStepper.prototype.defineCustomEvent('onstepcancel', true, true),
+	    onstepskip: MaterialStepper.prototype.defineCustomEvent('onstepskip', true, true),
+	    onstepback: MaterialStepper.prototype.defineCustomEvent('onstepback', true, true),
+	    onstepcomplete: MaterialStepper.prototype.defineCustomEvent('onstepcomplete', true, true),
+	    onsteperror: MaterialStepper.prototype.defineCustomEvent('onsteperror', true, true),
+	    onsteppercomplete: MaterialStepper.prototype.defineCustomEvent('onsteppercomplete', true, true)
 	  };
 
 	  /**
@@ -403,7 +378,7 @@
 	      // Prevents the step label to scrolling out of user view on Google Chrome.
 	      // More details here: <https://github.com/ahlechandre/mdl-stepper/issues/11 />.
 	      stepElements[i].addEventListener('scroll', function (event) {
-	        event.target.scrollTo(0, 0);
+	        event.target.scrollTop = 0;
 	      });
 	    }
 	    total = collection.length;
