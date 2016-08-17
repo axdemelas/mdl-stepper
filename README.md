@@ -10,13 +10,7 @@ A library that implements to the [Material Design Lite](https://getmdl.io) a pol
 ##Navigation
 * [Get started](#get-started) 
   * [Installation](#installation)
-    * [Download (zip)](#download-zip)
-    * [Build](#build)
-    * [NPM](#npm)
   * [Basic usage](#basic-usage)
-    * [CSS & Icons](#css--icons)
-    * [Javascript](#javascript)
-    * [Component](#component)
 * [Steppers](#steppers)
   * [Linear stepper](#linear-stepper) 
   * [Non-linear stepper](#non-linear-stepper) 
@@ -70,6 +64,12 @@ Goes to [development](#development) section for details.
 
 ```bash
 npm install --save mdl-stepper
+```
+
+### Bower
+
+```bash
+bower install mdl-stepper
 ```
 
 ## Basic usage
