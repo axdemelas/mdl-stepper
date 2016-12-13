@@ -80,7 +80,7 @@
   MaterialStepper.prototype.defineCustomEvent = function (evtName, bubble, cancel) {
     var ev;
     if ('CustomEvent' in window && typeof window.CustomEvent === 'function') {
-      ev = new Event(evtName, {
+      ev = new CustomEvent(evtName, {
         bubbles: bubble,
         cancelable: cancel
       });
