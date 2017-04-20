@@ -7,7 +7,7 @@ A library that implements to the [Material Design Lite](https://getmdl.io) a pol
 
 ![Horizontal stepper](https://ahlechandre.github.io/mdl-stepper/assets/svg/stepper-horizontal.svg)
 
-##Navigation
+## Navigation
 * [Get started](#get-started) 
   * [Installation](#installation)
   * [Basic usage](#basic-usage)
@@ -39,7 +39,7 @@ A library that implements to the [Material Design Lite](https://getmdl.io) a pol
 
 [ahlechandre.github.io/mdl-stepper](https://ahlechandre.github.io/mdl-stepper/)
 
-#Get started
+# Get started
 
 The MDL Stepper component was based on Material Design Lite (MDL) library. To use this component before you will need to include the [MDL](https://getmdl.io) to your project.
 
@@ -119,7 +119,7 @@ var Stepper = stepperElement.MaterialStepper;
 Stepper.next();
 ```
 
-#Steppers
+# Steppers
 
 The types of steppers and steps are specified in [Material Design page](https://www.google.com/design/spec/components/steppers.html).
 
@@ -151,7 +151,7 @@ Optional steps within a linear flow should be marked as optional. (Material Desi
 ### Error state
 ![Error state](docs/_assets/state_error.gif)
 
-#Introduction
+# Introduction
 
 "Steppers display progress through a sequence by breaking it up into multiple logical and numbered steps. Avoid using steppers to break up sections in a short form, or multiple times on one page". Goes to [Material Design spec](https://www.google.com/design/spec/components/steppers.html)  page.
 
@@ -249,7 +249,7 @@ var stepperElement = document.querySelector('.mdl-stepper');
 componentHandler.upgradeElement(stepperElement);
 ```
 
-#Development
+# Development
 
 ## Source
 
