@@ -192,7 +192,8 @@
     /** @type {HTMLElement} */
     var completed;
     completed = document.createElement('i');
-    completed.classList.add('material-icons', this.CssClasses_.STEP_LABEL_INDICATOR_CONTENT);
+    completed.classList.add('material-icons');
+    completed.classList.add(this.CssClasses_.STEP_LABEL_INDICATOR_CONTENT);
     // If step is editable the icon used will be "edit",
     // else the icon will be "check".
     completed.textContent = isEditable ? 'edit' : 'check';
