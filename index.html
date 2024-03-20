@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="The stepper polyfill will help you to implement this material design component today.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:url" content="https://axdemelas.github.io/mdl-stepper/"
+  />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="MDL Stepper component" />
+  <meta property="og:description" content="A library that implements to the Material Design Lite (MDL) a polyfill for stepper component specified by Material Design." />
+  <meta property="og:image" content="https://axdemelas.github.io/mdl-stepper/assets/stepper-vertical.png" />
+  <title>MDL Stepper</title>
+  <link rel="shortcut icon" href="./assets/component.png">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.blue-pink.min.css" />
+  <link rel="stylesheet" href="./stepper.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="./assets/demo.css">
+</head>
+
+<body>
+  <div class="mdl-layout mdl-js-layout">
+    <header class="mdl-layout__header">
+      <div class="mdl-layout__header-row">
+        <span class="mdl-layout-title">MDL Stepper</span>
+        <div class="mdl-layout-spacer"></div>
+        <nav class="mdl-navigation mdl-layout--large-screen-only">
+          <a class="mdl-navigation__link" href="./">About</a>
+          <a class="mdl-navigation__link" href="./started/">Get started</a>
+          <a class="mdl-navigation__link" href="./component/">Component</a>
+        </nav>
+      </div>
+    </header>
+    <div class="mdl-layout__drawer">
+      <span class="mdl-layout-title">MDL Stepper</span>
+      <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" href="./">About</a>
+        <a class="mdl-navigation__link" href="./started/">Get started</a>
+        <a class="mdl-navigation__link" href="./component/">Component</a>
+      </nav>
+    </div>
+    <main class="mdl-layout__content">
+      <div class="page-content">
+        <section class="stepper-section stepper-section--welcome">
+          <div clas="mdl-grid">
+            <div class="mdl-cell mdl-cell--12-col">
+              <img class="stepper-image stepper-image--component" src="./assets/component.png" alt="Stepper Component">
+            </div>
+            <div class="mdl-cell mdl-cell--8-col">
+              <h2 class="stepper-title">MDL Stepper</h2>
+              <h5 class="stepper-supporting-text">
+                A library that implements to the Material Design Lite (MDL) a polyfill for stepper component specified by Material Design.</h5>
+              <p style="opacity:0.6">V1.2.2</p>
+            </div>
+          </div>
+        </section>
+        <section class="stepper-section stepper-section--demo" id="demo">
+
+          <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--12-col">
+              <h1 class="stepper-title">Demonstration</h1>
+              <p>
+                The types of steppers and steps are specified in <a href="https://www.google.com/design/spec/components/steppers.html">Material Design page</a>.
+              </p>
+              <ul class="stepper-list mdl-list">
+                <li class="mdl-list__item mdl-list__item--three-line">
+                  <span class="mdl-list__item-primary-content">
+      <span>Type of steps</span>
+                  <span class="mdl-list__item-text-body">Editable steps, Non-editable steps, Mobile steps and Optional steps.</span>
+                  </span>
+                </li>
+                <li class="mdl-list__item mdl-list__item--three-line">
+                  <span class="mdl-list__item-primary-content">
+      <span>Type of steppers</span>
+                  <span class="mdl-list__item-text-body">Horizontal steppers, Vertical steppers, Linear steppers, Non-linear steppers, Alternative labels and Stepper feedback</span>
+                  </span>
+                </li>
+              </ul>
+
+              <p>Regarding the presented topics, here are the features supported by the MDL Stepper library:</p>
+
+              <ul class="stepper-menu-link mdl-list">
+                <li class="mdl-list__item">
+                  <span class="mdl-list__item-primary-content"><a href="#stepper-type-horizontal">Horizontal steppers</a></span>
+                </li>
+                <li class="mdl-list__item">
+                  <span class="mdl-list__item-primary-content"><a href="#stepper-type-vertical">Vertical steppers</a></span>
+                </li>
+                <li class="mdl-list__item">
+                  <span class="mdl-list__item-primary-content"><a href="#stepper-linear">Linear stepper</a></span>
+                </li>
+                <li class="mdl-list__item">
+                  <span class="mdl-list__item-primary-content"><a href="#stepper-non-linear">Non-linear stepper</a></span>
+                </li>
+                <li class="mdl-list__item">
+                  <span class="mdl-list__item-primary-content"><a href="#stepper-feedback">Stepper feedback</a></span>
+                </li>
+                <li class="mdl-list__item">
+                  <span class="mdl-list__item-primary-content"><a href="#stepper-editable-steps">Editable steps</a></span>
+                </li>
+                <li class="mdl-list__item">
+                  <span class="mdl-list__item-primary-content"><a href="#stepper-optional-steps">Optional steps</a></span>
+                </li>
+                <li class="mdl-list__item">
+                  <span class="mdl-list__item-primary-content"><a href="#stepper-error-state">Error state</a></span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- HORIZONTAL STEPPERS -->
+            <div class="mdl-cell mdl-cell--12-col" id="stepper-type-horizontal">
+              <h1 class="stepper-subtitle">Horizontal steppers</h1>
+              <p class="stepper-guideline-quote">Horizontal steppers are ideal when the contents of one step depend on an earlier step. On horizontal steppers,
+                the step name and numbers appear on a horizontal bar.</p>
+
+              <div class="stepper-snippet" id="snippet-svg-stepper-horizontal" data-content="./assets/svg/stepper-horizontal.svg"></div>
+
+              <p>
+                By default, the horiztonal steppers width is defined as 840px. To change width dimension you only need to update the value
+                of property <code>max-width</code>. Also, you can custom the height size of horizontal steppers
+                with <code>min-height</code> property.
+              </p>
+              <p class="stepper-note">Horizontal stepper is only available for large screens (e.g. desktop). In other words, the screen must have,
+                at least, 840px.</p>
+            </div>
+
+            <!-- VERTICAL STEPPERS -->
+            <div class="mdl-cell mdl-cell--12-col" id="stepper-type-vertical">
+              <h1 class="stepper-subtitle">Vertical steppers</h1>
+              <p class="stepper-guideline-quote">Vertical steppers are designed for narrow screen sizes. They are ideal for mobile.</p>
+              <div class="stepper-snippet" id="snippet-svg-stepper-vertical" data-content="./assets/svg/stepper-vertical.svg"></div>
+
+              <p>
+                By default, the vertical steppers width is defined as 800px. To change width dimension you only need to update the value
+                of property <code>max-width</code>.
+              </p>
+            </div>
+
+            <!-- LINEAR STEPPER -->
+            <div class="mdl-cell mdl-cell--12-col" id="stepper-linear">
+              <h1 class="stepper-subtitle">Linear stepper</h1>
+              <p class="stepper-guideline-quote">Linear steppers require users to complete one step in order to move on to the next.</p>
+
+              <div class="stepper-snippet" id="snippet-stepper-linear" data-content="./src/stepper/snippets/stepper-linear.html"></div>
+
+              <p>
+                <a href="#stepper-linear-toggle" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">Toggle horizontal/vertical</a>
+                <a href="https://github.com/axdemelas/mdl-stepper/tree/gh-pages/src/stepper/snippets/stepper-linear.html" target="_blank"
+                  class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored mdl-button--accent mdl-button--raised">get linear code</a>
+              </p>
+
+            </div>
+
+            <!-- NON-LINEAR STEPPER -->
+            <div class="mdl-cell mdl-cell--12-col" id="stepper-non-linear">
+              <h1 class="stepper-subtitle">Non-linear stepper</h1>
+              <p class="stepper-guideline-quote">Non-linear steppers allow users to enter a multi-step flow at any point.</p>
+
+              <div class="stepper-snippet" id="snippet-stepper-nonlinear" data-content="./src/stepper/snippets/stepper-nonlinear.html"></div>
+
+              <p>
+                <a href="#stepper-nonlinear-toggle" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">Toggle horizontal/vertical</a>
+                <a href="https://github.com/axdemelas/mdl-stepper/tree/gh-pages/src/stepper/snippets/stepper-nonlinear.html" target="_blank"
+                  class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored mdl-button--accent">get non-linear code</a>
+              </p>
+
+            </div>
+
+            <!-- STEPPER FEEDBACK -->
+            <div class="mdl-cell mdl-cell--12-col" id="stepper-feedback">
+              <h1 class="stepper-subtitle">Stepper feedback</h1>
+              <p class="stepper-guideline-quote">Steppers may display a transient feedback message after a step is saved. Stepper feedback should only be used
+                if there is a long latency between steps.</p>
+
+              <div class="stepper-snippet" id="snippet-stepper-feedback" data-content="./src/stepper/snippets/stepper-feedback.html"></div>
+
+              <p>
+                <a href="#stepper-feedback-toggle" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">Toggle horizontal/vertical</a>
+                <a href="https://github.com/axdemelas/mdl-stepper/tree/gh-pages/src/stepper/snippets/stepper-feedback.html" target="_blank"
+                  class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored mdl-button--accent">get feedback code</a>
+              </p>
+
+            </div>
+
+            <!-- EDITABLE STEPS -->
+            <div class="mdl-cell mdl-cell--12-col" id="stepper-editable-steps">
+              <h1 class="stepper-subtitle">Editable steps</h1>
+              <p class="stepper-guideline-quote">Editable steps allow users to return later to edit a step. These are ideal for workflows that involve editing
+                steps within a session.</p>
+
+              <div class="stepper-snippet" id="snippet-stepper-step-editable" data-content="./src/stepper/snippets/stepper-step-editable.html"></div>
+
+              <p>
+                <a href="#stepper-step-editable-toggle" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">Toggle horizontal/vertical</a>
+                <a href="https://github.com/axdemelas/mdl-stepper/tree/gh-pages/src/stepper/snippets/stepper-step-editable.html" target="_blank"
+                  class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored mdl-button--accent">get step editable code</a>
+              </p>
+
+            </div>
+
+            <!-- OPTIONAL STEPS -->
+            <div class="mdl-cell mdl-cell--12-col" id="stepper-optional-steps">
+              <h1 class="stepper-subtitle">Optional steps</h1>
+              <p class="stepper-guideline-quote">Optional steps within a linear flow should be marked as optional.</p>
+              <p class="stepper-note">
+                Steps marked as optional serve to define their behavior within the stepper and they will not show message "optional" by default.
+                You need to set the <a href="#config-step-title-message">title message</a> manually. Even
+                because this message may vary according to many languages.
+              </p>
+
+              <div class="stepper-snippet" id="snippet-stepper-step-optional" data-content="./src/stepper/snippets/stepper-step-optional.html"></div>
+
+              <p>
+                <a href="#stepper-step-optional-toggle" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">Toggle horizontal/vertical</a>
+                <a href="https://github.com/axdemelas/mdl-stepper/tree/gh-pages/src/stepper/snippets/stepper-step-optional.html" target="_blank"
+                  class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored mdl-button--accent">get optional step code</a>
+              </p>
+
+            </div>
+
+            <!-- ERROR STATE -->
+            <div class="mdl-cell mdl-cell--12-col" id="stepper-error-state">
+              <h1 class="stepper-subtitle">Error state</h1>
+
+              <div class="stepper-snippet" id="snippet-stepper-step-state-error" data-content="./src/stepper/snippets/stepper-step-state-error.html"></div>
+
+              <p>
+                <a href="#stepper-step-state-error-toggle" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">Toggle horizontal/vertical</a>
+                <a href="https://github.com/axdemelas/mdl-stepper/tree/gh-pages/src/stepper/snippets/stepper-step-state-error.html" target="_blank"
+                  class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored mdl-button--accent">get step + error state code</a>
+              </p>
+
+            </div>
+          </div>
+          <div id="snackbar-stepper-complete" class="mdl-js-snackbar mdl-snackbar">
+            <div class="mdl-snackbar__text"></div>
+            <button class="mdl-snackbar__action" type="button"></button>
+          </div>
+        </section>
+
+        <section class="stepper-anchor">
+          <div class="stepper-anchor__right">
+            <a href="./started"><span>Get started</span> <i class="material-icons">arrow_forward</i></a>
+          </div>
+        </section>
+        <footer class="mdl-mini-footer">
+          <div class="mdl-mini-footer__left-section">
+            <div class="mdl-logo">MDL Stepper</div>
+            <ul class="mdl-mini-footer__link-list">
+              <li><a href="./started/index.html#download">Download</a></li>
+              <li><a href="https://github.com/axdemelas/mdl-stepper">GitHub</a></li>
+            </ul>
+          </div>
+          <div class="mdl-mini-footer__right-section footer-credits">
+            <div class="mdl-logo"><a href="https://github.com/axdemelas">Alexandre Demelas</a></div>
+          </div>
+        </footer>
+      </div>
+    </main>
+  </div>
+  <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+  <script defer src="./stepper.min.js"></script>
+  <script>
+    (function () {
+      'use strict';
+      var getSnippet = function (element) {
+        var RequestSnippet;
+        var element /** @type {HTMLElement} */;
+        var content /** @type {string} */;
+        var response /** @type {string} */;
+        content = element.getAttribute('data-content');
+
+        if (!content || !content.length) return null;
+
+        RequestSnippet = new XMLHttpRequest();
+        RequestSnippet.onreadystatechange = function() {
+
+          if (RequestSnippet.readyState == 4 && RequestSnippet.status == 200) {
+            onSnippetLoad(element, RequestSnippet.responseText);
+          }
+        };
+        RequestSnippet.open('get', content, true);
+        RequestSnippet.send();
+      };
+      var getSnippets = function () {
+        var snippets = document.querySelectorAll('.stepper-snippet');
+        var i /** @type {number} */;
+
+        for (i = 0; i < snippets.length; i++) {
+          getSnippet(snippets[i]);
+        }
+      };
+      var onSnippetLoad = function (element, response) {
+        var scripts /** @type {NodeList} */;
+        var stepper /** @type {HTMLElement} */;
+        var i;
+        element.innerHTML = response;
+        stepper = element.querySelector('.mdl-stepper');
+        scripts = element.querySelectorAll('script');
+
+        if (typeof componentHandler !== 'undefined' && stepper) {
+          componentHandler.upgradeAllRegistered();
+        }
+
+        for (i = 0; i < scripts.length; i++) {
+          eval(scripts[i].textContent);
+        }
+      };
+
+      window['getSnippet'] = getSnippet;
+      window.addEventListener('load', getSnippets);
+    })();
+  </script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-73755855-1', 'auto');
+  ga('send', 'pageview');
+  </script>
+
+</body>
+
+</html>
