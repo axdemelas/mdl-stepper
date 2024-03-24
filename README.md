@@ -1,6 +1,6 @@
 # MDL Stepper
 
-[![npm version](https://badge.fury.io/js/mdl-stepper.svg)](https://badge.fury.io/js/mdl-stepper)
+![NPM Downloads](https://img.shields.io/npm/d18m/mdl-stepper) [![npm version](https://badge.fury.io/js/mdl-stepper.svg)](https://badge.fury.io/js/mdl-stepper)
 
 A library that implements to the [Material Design Lite](https://getmdl.io) a polyfill of stepper component specified by [Material Design](https://www.google.com/design/spec/components/steppers.html). The stepper polyfill will help you to implement this material design component today.
 
